@@ -7,9 +7,9 @@ Open up the sub-project called UnityFunctional in Visual Studio. This project in
 assemblies from the UnityFunctional project and into the Unity project. You will need to change this by **Selecting UnityFunctional**
 and hitting <kbd>Alt</kbd>+<kbd>Enter</kbd>, which brings up the project properties panel. Navigate to **Build Events** and change:
 ```bash
-move /Y "C:\Users\tobia\Documents\Unity-F#\UnityFunctional\UnityFunctional\bin\Release\net45\UnityFunctional.dll" "C:\Users\tobia\Documents\Unity-F#\Assets\Frameworks\UnityFunctional.dll"
+move /Y compiled_dll_path unity_frameworks_path
 ```
-To the corresponding path on your system.
+To the corresponding paths on your system. I had to use absolute paths and the compiled dll will end up under `Unity-F#\UnityFunctional\UnityFunctional\bin\Release\net45\UnityFunctional.dll`.
 
 Now open up the Unity project.
 
