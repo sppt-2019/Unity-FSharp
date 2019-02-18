@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net45</TargetFramework>
+    <RunPostBuildEvent>1</RunPostBuildEvent>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Library.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="move /Y &quot;C:\Users\tobia\Documents\Unity-F#\UnityFunctional\UnityFunctional\bin\Release\net45\UnityFunctional.dll&quot; &quot;C:\Users\tobia\Documents\Unity-F#\Assets\Frameworks\UnityFunctional.dll&quot;" />
+  </Target>
+
+</Project>
