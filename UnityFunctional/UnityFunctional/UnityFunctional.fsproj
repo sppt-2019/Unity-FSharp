@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="StateMachine.fs" />
     <Compile Include="ThirdPersonController.fs" />
     <Compile Include="FPSController.fs" />
     <Compile Include="Magnetism.fs" />
