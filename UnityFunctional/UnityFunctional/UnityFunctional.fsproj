@@ -6,7 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Library.fs" />
+    <Compile Include="ThirdPersonController.fs" />
+    <Compile Include="FPSController.fs" />
+    <Compile Include="Magnetism.fs" />
+    <Compile Include="Library.fs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
