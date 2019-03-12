@@ -2,7 +2,6 @@ namespace UnityFunctional
 open UnityEngine
 open System
 
-
 type TestComponent() = 
     inherit UnityEngine.MonoBehaviour()
     [<SerializeField>]
