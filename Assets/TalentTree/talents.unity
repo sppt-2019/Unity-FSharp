@@ -397,7 +397,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +45 Intellect
+  m_Text: 
 --- !u!222 &87761952
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -476,7 +476,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +15 Strength
+  m_Text: 
 --- !u!222 &99145664
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -555,9 +555,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+25 Intellect
-
-    +25 Agility'
+  m_Text: 
 --- !u!222 &201498658
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -660,8 +658,9 @@ GameObject:
   - component: {fileID: 206657442}
   - component: {fileID: 206657441}
   - component: {fileID: 206657440}
+  - component: {fileID: 206657443}
   m_Layer: 5
-  m_Name: Int+Agi
+  m_Name: 18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -680,8 +679,8 @@ RectTransform:
   m_Children:
   - {fileID: 1683007406}
   - {fileID: 2090227711}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 11
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -739,12 +738,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 206657443}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -790,6 +789,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206657438}
   m_CullTransparentMesh: 0
+--- !u!114 &206657443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206657438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 1683007407}
+  TalentText: {fileID: 487659061}
+  Background: {fileID: 206657441}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &209606010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1084,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f89b19d52846d8544a3c930c6c540a40, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1321,8 +1336,9 @@ GameObject:
   - component: {fileID: 437366799}
   - component: {fileID: 437366798}
   - component: {fileID: 437366797}
+  - component: {fileID: 437366800}
   m_Layer: 5
-  m_Name: All
+  m_Name: 16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1341,8 +1357,8 @@ RectTransform:
   m_Children:
   - {fileID: 1186156035}
   - {fileID: 1115288176}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 10
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1400,12 +1416,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 437366800}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -1451,6 +1467,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437366795}
   m_CullTransparentMesh: 0
+--- !u!114 &437366800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437366795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 1186156036}
+  TalentText: {fileID: 819741977}
+  Background: {fileID: 437366798}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &465837307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,9 +1703,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+25 Intellect
-
-    +25 Agility'
+  m_Text: 
 --- !u!222 &487659062
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1752,9 +1782,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+15 Strength
-
-    +15 Intellect'
+  m_Text: 
 --- !u!222 &498096427
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1820,7 +1848,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4f1d46bc4035c234f8e92be8194c08ba, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1907,7 +1935,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +20 Intellect
+  m_Text: 
 --- !u!222 &522258562
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2047,7 +2075,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 23f2acf2459ffbd4284f19ea1d62cd7a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2076,8 +2104,9 @@ GameObject:
   - component: {fileID: 611514407}
   - component: {fileID: 611514406}
   - component: {fileID: 611514405}
+  - component: {fileID: 611514408}
   m_Layer: 5
-  m_Name: Str
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2090,13 +2119,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611514403}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1768260452}
   - {fileID: 1284157062}
-  m_Father: {fileID: 1971550149}
+  m_Father: {fileID: 1062062115}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2155,12 +2184,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 611514408}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2206,6 +2235,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611514403}
   m_CullTransparentMesh: 0
+--- !u!114 &611514408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611514403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 1768260453}
+  TalentText: {fileID: 99145663}
+  Background: {fileID: 611514406}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &612206771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2425,7 +2470,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +15 Agility
+  m_Text: 
 --- !u!222 &684994938
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2566,7 +2611,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d52c6843920a13a42b7d56478aef4409, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2595,8 +2640,9 @@ GameObject:
   - component: {fileID: 718702049}
   - component: {fileID: 718702048}
   - component: {fileID: 718702047}
+  - component: {fileID: 718702050}
   m_Layer: 5
-  m_Name: Agi
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2615,7 +2661,7 @@ RectTransform:
   m_Children:
   - {fileID: 1571904057}
   - {fileID: 1225591702}
-  m_Father: {fileID: 1971550149}
+  m_Father: {fileID: 1062062115}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2674,12 +2720,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 718702050}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2725,6 +2771,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718702045}
   m_CullTransparentMesh: 0
+--- !u!114 &718702050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718702045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 1571904058}
+  TalentText: {fileID: 2024881084}
+  Background: {fileID: 718702048}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &784639965
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,7 +2857,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +45 Intellect
+  m_Text: 
 --- !u!222 &784639968
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2816,8 +2878,9 @@ GameObject:
   - component: {fileID: 812683969}
   - component: {fileID: 812683968}
   - component: {fileID: 812683967}
+  - component: {fileID: 812683970}
   m_Layer: 5
-  m_Name: Int
+  m_Name: 19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2836,8 +2899,8 @@ RectTransform:
   m_Children:
   - {fileID: 926125423}
   - {fileID: 1404239675}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 12
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2895,12 +2958,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 812683970}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2946,6 +3009,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812683965}
   m_CullTransparentMesh: 0
+--- !u!114 &812683970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812683965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 926125424}
+  TalentText: {fileID: 87761951}
+  Background: {fileID: 812683968}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &819741975
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,11 +3095,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+15 Strength
-
-    +15 Intellect
-
-    +15 Agility'
+  m_Text: 
 --- !u!222 &819741978
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3076,7 +3151,7 @@ RectTransform:
   - {fileID: 991612247}
   - {fileID: 892849442}
   m_Father: {fileID: 1971550149}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3095,8 +3170,9 @@ GameObject:
   - component: {fileID: 847137930}
   - component: {fileID: 847137929}
   - component: {fileID: 847137928}
+  - component: {fileID: 847137931}
   m_Layer: 5
-  m_Name: Int
+  m_Name: 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3115,8 +3191,8 @@ RectTransform:
   m_Children:
   - {fileID: 2110836646}
   - {fileID: 1582420}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 19
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3174,12 +3250,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 847137931}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -3225,6 +3301,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847137926}
   m_CullTransparentMesh: 0
+--- !u!114 &847137931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847137926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 2110836647}
+  TalentText: {fileID: 784639967}
+  Background: {fileID: 847137929}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &858006522
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,8 +3329,9 @@ GameObject:
   - component: {fileID: 858006526}
   - component: {fileID: 858006525}
   - component: {fileID: 858006524}
+  - component: {fileID: 858006527}
   m_Layer: 5
-  m_Name: Int+Agi
+  m_Name: 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3257,8 +3350,8 @@ RectTransform:
   m_Children:
   - {fileID: 544469633}
   - {fileID: 1777428142}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 8
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3316,12 +3409,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 858006527}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -3367,6 +3460,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858006522}
   m_CullTransparentMesh: 0
+--- !u!114 &858006527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858006522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 544469634}
+  TalentText: {fileID: 877912950}
+  Background: {fileID: 858006525}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &877912948
 GameObject:
   m_ObjectHideFlags: 0
@@ -3437,9 +3546,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+15 Strength
-
-    +15 Intellect'
+  m_Text: 
 --- !u!222 &877912951
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3534,8 +3641,9 @@ GameObject:
   - component: {fileID: 894231776}
   - component: {fileID: 894231775}
   - component: {fileID: 894231774}
+  - component: {fileID: 894231777}
   m_Layer: 5
-  m_Name: Str
+  m_Name: 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3554,8 +3662,8 @@ RectTransform:
   m_Children:
   - {fileID: 1019668354}
   - {fileID: 1353488377}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 18
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3613,12 +3721,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 894231777}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -3664,6 +3772,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894231772}
   m_CullTransparentMesh: 0
+--- !u!114 &894231777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894231772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 1019668355}
+  TalentText: {fileID: 1442046914}
+  Background: {fileID: 894231775}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &926125422
 GameObject:
   m_ObjectHideFlags: 0
@@ -3721,7 +3845,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ea52aaede688ef94c957d28e261d967a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3808,7 +3932,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +20 Intellect
+  m_Text: 
 --- !u!222 &935372146
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4022,7 +4146,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4f1d46bc4035c234f8e92be8194c08ba, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4170,7 +4294,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ea52aaede688ef94c957d28e261d967a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4187,6 +4311,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051639328}
   m_CullTransparentMesh: 0
+--- !u!1 &1062062114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1062062115}
+  - component: {fileID: 1062062116}
+  m_Layer: 5
+  m_Name: Talents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1062062115
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062062114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1699930361}
+  - {fileID: 611514404}
+  - {fileID: 1393072096}
+  - {fileID: 1410311088}
+  - {fileID: 2049166747}
+  - {fileID: 718702046}
+  - {fileID: 1539449772}
+  - {fileID: 894231773}
+  - {fileID: 1452470863}
+  - {fileID: 1853882960}
+  - {fileID: 847137927}
+  - {fileID: 1845360848}
+  - {fileID: 858006523}
+  - {fileID: 1723261799}
+  - {fileID: 1327921924}
+  - {fileID: 1242224033}
+  - {fileID: 437366796}
+  - {fileID: 1664796433}
+  - {fileID: 206657439}
+  - {fileID: 812683966}
+  m_Father: {fileID: 1971550149}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1062062116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062062114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311c16d2c4a8b5542aa84876abe51407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseTalent: {fileID: 11400000, guid: ff02250266b7fd74f90aa7d101a8aa63, type: 2}
 --- !u!1 &1084990166
 GameObject:
   m_ObjectHideFlags: 0
@@ -4244,7 +4437,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3f6cc8930fcab3549a6fb058c404dbd1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4542,7 +4735,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f89b19d52846d8544a3c930c6c540a40, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4629,9 +4822,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+20 Strength
-
-    +20 Agility'
+  m_Text: 
 --- !u!222 &1201550194
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4710,11 +4901,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+5 Strength
-
-    +5 Intellect
-
-    +5 Agility'
+  m_Text: 
 --- !u!222 &1221245584
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4885,8 +5072,9 @@ GameObject:
   - component: {fileID: 1242224036}
   - component: {fileID: 1242224035}
   - component: {fileID: 1242224034}
+  - component: {fileID: 1242224037}
   m_Layer: 5
-  m_Name: Agi
+  m_Name: 15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4905,8 +5093,8 @@ RectTransform:
   m_Children:
   - {fileID: 1849583066}
   - {fileID: 1313818850}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 9
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4964,12 +5152,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 1242224037}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -5015,6 +5203,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242224032}
   m_CullTransparentMesh: 0
+--- !u!114 &1242224037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242224032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 1849583067}
+  TalentText: {fileID: 2014220650}
+  Background: {fileID: 1242224035}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &1250360300
 GameObject:
   m_ObjectHideFlags: 0
@@ -5072,7 +5276,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2968951848274d144ae3bf9262713d67, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5159,7 +5363,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +30 Agility
+  m_Text: 
 --- !u!222 &1269309749
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5405,8 +5609,9 @@ GameObject:
   - component: {fileID: 1327921927}
   - component: {fileID: 1327921926}
   - component: {fileID: 1327921925}
+  - component: {fileID: 1327921928}
   m_Layer: 5
-  m_Name: Agi
+  m_Name: 14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5425,8 +5630,8 @@ RectTransform:
   m_Children:
   - {fileID: 1084990167}
   - {fileID: 706322419}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 13
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5484,12 +5689,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 1327921928}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -5535,6 +5740,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327921923}
   m_CullTransparentMesh: 0
+--- !u!114 &1327921928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327921923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 1084990168}
+  TalentText: {fileID: 1269309748}
+  Background: {fileID: 1327921926}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &1353488376
 GameObject:
   m_ObjectHideFlags: 0
@@ -5680,7 +5901,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +20 Intellect
+  m_Text: 
 --- !u!222 &1384135555
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5701,8 +5922,9 @@ GameObject:
   - component: {fileID: 1393072099}
   - component: {fileID: 1393072098}
   - component: {fileID: 1393072097}
+  - component: {fileID: 1393072100}
   m_Layer: 5
-  m_Name: Int
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5721,8 +5943,8 @@ RectTransform:
   m_Children:
   - {fileID: 2045125688}
   - {fileID: 294431564}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 4
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5780,12 +6002,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 1393072100}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -5831,6 +6053,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393072095}
   m_CullTransparentMesh: 0
+--- !u!114 &1393072100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393072095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 2045125689}
+  TalentText: {fileID: 935372145}
+  Background: {fileID: 1393072098}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &1394811731
 GameObject:
   m_ObjectHideFlags: 0
@@ -5992,8 +6230,9 @@ GameObject:
   - component: {fileID: 1410311091}
   - component: {fileID: 1410311090}
   - component: {fileID: 1410311089}
+  - component: {fileID: 1410311092}
   m_Layer: 5
-  m_Name: Str+Int
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6012,8 +6251,8 @@ RectTransform:
   m_Children:
   - {fileID: 1787580667}
   - {fileID: 1712803538}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 15
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6071,12 +6310,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 1410311092}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -6122,6 +6361,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410311087}
   m_CullTransparentMesh: 0
+--- !u!114 &1410311092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410311087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 1787580668}
+  TalentText: {fileID: 498096426}
+  Background: {fileID: 1410311090}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &1442046912
 GameObject:
   m_ObjectHideFlags: 0
@@ -6192,7 +6447,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +40 Strength
+  m_Text: 
 --- !u!222 &1442046915
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6213,8 +6468,9 @@ GameObject:
   - component: {fileID: 1452470866}
   - component: {fileID: 1452470865}
   - component: {fileID: 1452470864}
+  - component: {fileID: 1452470867}
   m_Layer: 5
-  m_Name: Int
+  m_Name: 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6227,14 +6483,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452470862}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1692162501}
   - {fileID: 612206772}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 2
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6292,12 +6548,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 1452470867}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -6343,6 +6599,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452470862}
   m_CullTransparentMesh: 0
+--- !u!114 &1452470867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452470862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 1692162502}
+  TalentText: {fileID: 1495176607}
+  Background: {fileID: 1452470865}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &1495176605
 GameObject:
   m_ObjectHideFlags: 0
@@ -6413,7 +6685,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +15 Intellect
+  m_Text: 
 --- !u!222 &1495176608
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6509,8 +6781,9 @@ GameObject:
   - component: {fileID: 1539449775}
   - component: {fileID: 1539449774}
   - component: {fileID: 1539449773}
+  - component: {fileID: 1539449776}
   m_Layer: 5
-  m_Name: Str+Agi
+  m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6529,8 +6802,8 @@ RectTransform:
   m_Children:
   - {fileID: 1250360301}
   - {fileID: 1234399168}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 17
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6588,12 +6861,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 1539449776}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -6639,6 +6912,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539449771}
   m_CullTransparentMesh: 0
+--- !u!114 &1539449776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539449771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 1250360302}
+  TalentText: {fileID: 1201550193}
+  Background: {fileID: 1539449774}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &1542763274
 GameObject:
   m_ObjectHideFlags: 0
@@ -6696,7 +6985,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ea52aaede688ef94c957d28e261d967a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6770,7 +7059,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3f6cc8930fcab3549a6fb058c404dbd1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6873,8 +7162,9 @@ GameObject:
   - component: {fileID: 1664796436}
   - component: {fileID: 1664796435}
   - component: {fileID: 1664796434}
+  - component: {fileID: 1664796437}
   m_Layer: 5
-  m_Name: Int
+  m_Name: 17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6893,8 +7183,8 @@ RectTransform:
   m_Children:
   - {fileID: 1542763275}
   - {fileID: 1835289559}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 14
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6952,12 +7242,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 1664796437}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -7003,6 +7293,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664796432}
   m_CullTransparentMesh: 0
+--- !u!114 &1664796437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664796432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 1542763276}
+  TalentText: {fileID: 1384135554}
+  Background: {fileID: 1664796435}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &1668417094
 GameObject:
   m_ObjectHideFlags: 0
@@ -7129,7 +7435,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d52c6843920a13a42b7d56478aef4409, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7203,7 +7509,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ea52aaede688ef94c957d28e261d967a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7306,8 +7612,9 @@ GameObject:
   - component: {fileID: 1699930363}
   - component: {fileID: 1699930362}
   - component: {fileID: 1699930364}
+  - component: {fileID: 1699930365}
   m_Layer: 5
-  m_Name: All
+  m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7320,13 +7627,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699930360}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 286615220}
   - {fileID: 465837308}
-  m_Father: {fileID: 1971550149}
+  m_Father: {fileID: 1062062115}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7422,12 +7729,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 1699930365}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -7436,6 +7743,22 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &1699930365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699930360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 286615221}
+  TalentText: {fileID: 1221245583}
+  Background: {fileID: 1699930362}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &1710298523
 GameObject:
   m_ObjectHideFlags: 0
@@ -7597,8 +7920,9 @@ GameObject:
   - component: {fileID: 1723261802}
   - component: {fileID: 1723261801}
   - component: {fileID: 1723261800}
+  - component: {fileID: 1723261803}
   m_Layer: 5
-  m_Name: Agi
+  m_Name: 13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7611,14 +7935,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723261798}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2132389044}
   - {fileID: 1293541055}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 3
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7676,12 +8000,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 1723261803}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -7727,6 +8051,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723261798}
   m_CullTransparentMesh: 0
+--- !u!114 &1723261803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723261798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 2132389045}
+  TalentText: {fileID: 684994937}
+  Background: {fileID: 1723261801}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &1768260451
 GameObject:
   m_ObjectHideFlags: 0
@@ -7784,7 +8124,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4f1d46bc4035c234f8e92be8194c08ba, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7933,7 +8273,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 23f2acf2459ffbd4284f19ea1d62cd7a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8037,8 +8377,9 @@ GameObject:
   - component: {fileID: 1845360851}
   - component: {fileID: 1845360850}
   - component: {fileID: 1845360849}
+  - component: {fileID: 1845360852}
   m_Layer: 5
-  m_Name: Int+Agi
+  m_Name: 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8057,8 +8398,8 @@ RectTransform:
   m_Children:
   - {fileID: 718580908}
   - {fileID: 1523827019}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 20
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8116,12 +8457,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 1845360852}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -8167,6 +8508,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845360847}
   m_CullTransparentMesh: 0
+--- !u!114 &1845360852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845360847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 718580909}
+  TalentText: {fileID: 201498657}
+  Background: {fileID: 1845360850}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &1849583065
 GameObject:
   m_ObjectHideFlags: 0
@@ -8224,7 +8581,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3f6cc8930fcab3549a6fb058c404dbd1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8253,8 +8610,9 @@ GameObject:
   - component: {fileID: 1853882963}
   - component: {fileID: 1853882962}
   - component: {fileID: 1853882961}
+  - component: {fileID: 1853882964}
   m_Layer: 5
-  m_Name: Int
+  m_Name: 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8273,8 +8631,8 @@ RectTransform:
   m_Children:
   - {fileID: 1051639329}
   - {fileID: 482503063}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 7
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8332,12 +8690,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 1853882964}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -8383,6 +8741,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853882959}
   m_CullTransparentMesh: 0
+--- !u!114 &1853882964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853882959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 1051639330}
+  TalentText: {fileID: 522258561}
+  Background: {fileID: 1853882962}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &1899351602
 GameObject:
   m_ObjectHideFlags: 0
@@ -8621,27 +8995,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1699930361}
-  - {fileID: 611514404}
-  - {fileID: 1452470863}
-  - {fileID: 1723261799}
-  - {fileID: 1393072096}
-  - {fileID: 718702046}
   - {fileID: 827606287}
-  - {fileID: 1853882960}
-  - {fileID: 858006523}
-  - {fileID: 1242224033}
-  - {fileID: 437366796}
-  - {fileID: 206657439}
-  - {fileID: 812683966}
-  - {fileID: 1327921924}
-  - {fileID: 1664796433}
-  - {fileID: 1410311088}
-  - {fileID: 2049166747}
-  - {fileID: 1539449772}
-  - {fileID: 894231773}
-  - {fileID: 847137927}
-  - {fileID: 1845360848}
+  - {fileID: 1062062115}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8720,7 +9075,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +30 Strength
+  m_Text: 
 --- !u!222 &2010142449
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8799,7 +9154,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +50 Agility
+  m_Text: 
 --- !u!222 &2014220651
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8878,7 +9233,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +20 Agility
+  m_Text: 
 --- !u!222 &2024881085
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8944,7 +9299,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ea52aaede688ef94c957d28e261d967a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8973,8 +9328,9 @@ GameObject:
   - component: {fileID: 2049166750}
   - component: {fileID: 2049166749}
   - component: {fileID: 2049166748}
+  - component: {fileID: 2049166751}
   m_Layer: 5
-  m_Name: Str
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8993,8 +9349,8 @@ RectTransform:
   m_Children:
   - {fileID: 503010991}
   - {fileID: 1176335683}
-  m_Father: {fileID: 1971550149}
-  m_RootOrder: 16
+  m_Father: {fileID: 1062062115}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9052,12 +9408,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
+        - m_Target: {fileID: 2049166751}
+          m_MethodName: Click
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -9103,6 +9459,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049166746}
   m_CullTransparentMesh: 0
+--- !u!114 &2049166751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049166746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259eb98414439bc4ba7ac436d1c2b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TalentIcon: {fileID: 503010992}
+  TalentText: {fileID: 2010142448}
+  Background: {fileID: 2049166749}
+  PickedBackground: {fileID: 21300000, guid: fb05a2fc369a6b1468263615c05c6e6d, type: 3}
 --- !u!1 &2090227710
 GameObject:
   m_ObjectHideFlags: 0
@@ -9235,7 +9607,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ea52aaede688ef94c957d28e261d967a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9309,7 +9681,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3f6cc8930fcab3549a6fb058c404dbd1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

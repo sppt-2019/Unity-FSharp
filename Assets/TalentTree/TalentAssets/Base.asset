@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7aea08109e8fa646b27fce218dc615b, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier: 
+  Picked: 1
+  Strength: 5
+  Intellect: 5
+  Agility: 5
+  Sprite: {fileID: 21300000, guid: f89b19d52846d8544a3c930c6c540a40, type: 3}
+  SubTalents:
+  - {fileID: 11400000, guid: a43211716b115fc4bb00a56cb7403c4f, type: 2}
+  - {fileID: 11400000, guid: 5ee99cd733455864699a7af50efa4f73, type: 2}
+  - {fileID: 11400000, guid: d013f4f98a62be845bea4180c6163b21, type: 2}
