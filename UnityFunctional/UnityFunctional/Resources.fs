@@ -3,7 +3,7 @@
 open UnityEngine
 open System
 
-type Resources() =
+type FRP_Resources() =
     inherit MonoBehaviour()
 
     [<SerializeField>]
@@ -13,7 +13,7 @@ type Resources() =
     [<SerializeField>]
     let mutable Vildild:int = 5
     [<DefaultValue>]
-    val mutable ResourceController:ResourceController
+    val mutable ResourceController:FRP_ResourceController
 
     member this.Start() =
         this.ResourceController.UpdateResources DildSild MildAbild Vildild

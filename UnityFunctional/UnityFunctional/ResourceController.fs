@@ -3,7 +3,7 @@
 open UnityEngine
 open System
 
-type ResourceController() =
+type FRP_ResourceController() =
     inherit MonoBehaviour()
 
     [<SerializeField>]
