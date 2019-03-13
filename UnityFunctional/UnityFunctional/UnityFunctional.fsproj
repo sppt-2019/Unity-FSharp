@@ -6,16 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="IStateMachineEntity.fs" />
     <Compile Include="ResourceController.fs" />
     <Compile Include="Resources.fs" />
     <Compile Include="TalentTree.fs" />
     <Compile Include="StateMachine.fs" />
+    <Compile Include="Shooter.fs" />
     <Compile Include="ThirdPersonController.fs" />
     <Compile Include="FPSController.fs" />
     <Compile Include="Magnetism.fs" />
-    <Compile Include="Library.fs">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>

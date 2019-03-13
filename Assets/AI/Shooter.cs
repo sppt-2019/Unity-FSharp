@@ -25,4 +25,13 @@ public class Shooter : MonoBehaviour
             GameObject.FindGameObjectWithTag("StateMachine").GetComponent<StateMachine>().JoinState(this, State.Fleeing);
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.name == "Boundary")
+        {
+            transform.Rotate(0, 180, 0);
+            return;
+        }
+    }
 }
