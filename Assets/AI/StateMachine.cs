@@ -45,7 +45,10 @@ class StateMachine : MonoBehaviour
 
         if(state == State.Moving)
         {
-            var newTarget = new Vector3(UnityEngine.Random.Range(-5f, 5f), ranger.transform.position.y, UnityEngine.Random.Range(-5f, 5f));
+            var newTarget = new Vector3(
+                UnityEngine.Random.Range(-3.7f, 5.7f),
+                ranger.transform.position.y,
+                UnityEngine.Random.Range(-6f, 3.4f));
             ranger.MoveTarget = newTarget;
         }
         else if(state == State.Fleeing)
