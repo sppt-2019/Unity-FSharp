@@ -5,16 +5,49 @@ open System
 type FRP_ThirdPersonController() =
     inherit FRPBehaviour()
 
-    member this.Start() =
-        this.ReactTo (
-            FRPEvent.Keyboard, 
-            (fun a -> Input.GetKeyDown(KeyCode.Space)),
-            (fun s -> 
-                Debug.Log("FRP message: " + s)))
+    [<SerializeField>]
+    let mutable JumpSpeed = 3.0f
+    [<SerializeField>]
+    let mutable MoveSpeed = 3.0f
+    [<SerializeField>]
+    let mutable RotationSpeed = 25.0f
+    [<SerializeField>]
+    let mutable Camera:Camera = null
+    [<SerializeField>]
+    let mutable CameraRotationSpeed = 50.0f
 
-        this.ReactTo (
-            FRPEvent.MouseClick,
-            (fun a -> Input.GetMouseButtonDown(0)),
-            (fun s ->
-                Debug.Log("FRP message: " + s)
+    member this.Start() =
+        this.ReactTo<string> (
+            FRPEvent.Keyboard, 
+            (fun a -> Input.GetKeyDown KeyCode.Space && not (Input.GetKey KeyCode.LeftControl)),
+            (fun s -> 
+                let rb = this.GetComponent<Rigidbody>()
+                rb.velocity <- rb.velocity + (Vector3.up * JumpSpeed)
         ))
+        this.ReactTo<float32*float32> (
+            FRPEvent.MoveAxis,
+            (fun s ->
+                let (deltaX, deltaY) = s.Deconstruct()
+                let rb = this.GetComponent<Rigidbody>()
+
+                rb.MovePosition(rb.transform.position + rb.transform.forward * (MoveSpeed * Time.deltaTime * deltaY))
+                rb.transform.Rotate(0.0f, RotationSpeed * Time.deltaTime * deltaX, 0.0f))
+        )
+
+        this.ReactTo<string> (
+            FRPEvent.Keyboard,
+            (fun a -> Input.GetKey KeyCode.LeftControl && Input.GetKeyDown KeyCode.Space),
+            (fun s -> 
+                Debug.Log("Ctrl + Space")
+            )
+        )
+
+        this.ReactTo<float32*float32> (
+            FRPEvent.MouseMove,
+            (fun m -> 
+                let (deltaX, deltaY) = m.Deconstruct()
+                //Camera.transform.RotateAround(this.transform.position, this.transform.up, CameraRotationSpeed * Time.deltaTime * deltaX)
+                Camera.transform.RotateAround(this.transform.position, new Vector3(1.0f, 0.0f, 0.0f), CameraRotationSpeed * Time.deltaTime * deltaY)
+                //Todo: Rotate camera with vertical mouse movements
+            )
+        )
