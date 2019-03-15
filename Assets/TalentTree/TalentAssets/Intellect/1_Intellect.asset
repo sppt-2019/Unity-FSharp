@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7aea08109e8fa646b27fce218dc615b, type: 3}
+  m_Name: 1_Intellect
+  m_EditorClassIdentifier: 
+  Picked: 0
+  Strength: 0
+  Intellect: 15
+  Agility: 0
+  Sprite: {fileID: 21300000, guid: ea52aaede688ef94c957d28e261d967a, type: 3}
+  SubTalents:
+  - {fileID: 11400000, guid: 21b91d2095ef64841af45edf44cc2416, type: 2}
+  - {fileID: 11400000, guid: a4bc878b8170cd54ba10c90712c54fbb, type: 2}

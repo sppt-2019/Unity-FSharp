@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7aea08109e8fa646b27fce218dc615b, type: 3}
+  m_Name: 3_IntAgi
+  m_EditorClassIdentifier: 
+  Strength: 0
+  Intellect: 25
+  Agility: 25
+  Sprite: {fileID: 21300000, guid: d52c6843920a13a42b7d56478aef4409, type: 3}
+  SubTalents: []
