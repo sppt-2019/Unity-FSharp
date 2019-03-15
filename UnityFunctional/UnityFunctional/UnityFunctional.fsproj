@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="FRPBehaviour.fs" />
     <Compile Include="IStateMachineEntity.fs" />
     <Compile Include="ResourceController.fs" />
     <Compile Include="Resources.fs" />
