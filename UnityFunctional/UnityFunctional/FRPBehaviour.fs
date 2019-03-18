@@ -18,8 +18,8 @@ type MouseButton =
 type FRPBehaviour() =
     inherit MonoBehaviour()
 
-    let KeyboardEvent = new Event<string>()
-    let MouseClickEvent = new Event<string>()
+    let KeyboardEvent = new Event<_>()
+    let MouseClickEvent = new Event<_>()
     let MouseMoveEvent = new Event<float32*float32>()
     let MoveAxisEvent = new Event<float32*float32>()
     let UpdateEvent = new Event<_>()
@@ -44,28 +44,29 @@ type FRPBehaviour() =
         | Update    -> UpdateEvent.Publish :?> IEvent<'T>
         | MoveAxis  -> MoveAxisEvent.Publish :?> IEvent<'T>
 
-    member this.ReactTo<'T> (event:FRPEvent, condition:('T -> bool), handler:('T -> unit)) =
+    member this.ReactTo<'T> (event:FRPEvent, condition:('T -> bool), handler:('T -> _)) =
         let e = this.GetEvent<'T> event
         e
         |> Event.filter (condition)
         |> Event.add (handler)
 
-    member this.ReactTo<'T> (event:FRPEvent, handler:('T -> unit)) =
+    member this.ReactTo<'T> (event:FRPEvent, handler:('T -> _)) =
         let e = this.GetEvent<'T> event
         e
         |> Event.add (handler)
 
     member this.Update() =
         if AnyKeyboardKey() then
-            KeyboardEvent.Trigger ("Keyboard Event")
+            KeyboardEvent.Trigger ()
         if AnyMouseButton() then
-            MouseClickEvent.Trigger ("Mouse Click Event")
+            MouseClickEvent.Trigger ()
         let mouseX = Input.GetAxis("Mouse X")
         let mouseY = Input.GetAxis("Mouse Y")
         if Mathf.Abs(mouseX) > 0.0f || Mathf.Abs(mouseY) > 0.0f then
             MouseMoveEvent.Trigger(mouseX,mouseY)
         let axisX = Input.GetAxis("Horizontal")
         let axisY = Input.GetAxis("Vertical")
+        Debug.Log("(" + axisX.ToString() + ", " + axisY.ToString() + ")")
         if Mathf.Abs(axisX) > 0.0f || Mathf.Abs(axisY) > 0.0f then
             MoveAxisEvent.Trigger(axisX,axisY)
 
