@@ -66,7 +66,6 @@ type FRPBehaviour() =
             MouseMoveEvent.Trigger(mouseX,mouseY)
         let axisX = Input.GetAxis("Horizontal")
         let axisY = Input.GetAxis("Vertical")
-        Debug.Log("(" + axisX.ToString() + ", " + axisY.ToString() + ")")
         if Mathf.Abs(axisX) > 0.0f || Mathf.Abs(axisY) > 0.0f then
             MoveAxisEvent.Trigger(axisX,axisY)
 
