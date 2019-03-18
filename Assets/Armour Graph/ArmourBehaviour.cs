@@ -1,58 +1,65 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ArmourBehaviour : MonoBehaviour
 {
-    List<Item> Armour = new List<Item>();
-    List<Group> GroupedArmour = new List<Group>();
     // Start is called before the first frame update
     void Start()
     {
-        Armour.Add(new Item("Helm"));
-        Armour.Add(new Item("Amulet"));
-        Armour.Add(new Item("Chest"));
-        Armour.Add(new Item("Pauldrons"));
-        Armour.Add(new Item("Belt"));
-        Armour.Add(new Item("Greaves"));
-        Armour.Add(new Item("Boots"));
-        Armour.Add(new Item("Gloves"));
-        Armour.Add(new Item("Rings"));
-        Armour.Add(new Item("Weapons"));
+        List<Item> Armour = Item.Exercise1();
+        List<Group> GroupedArmour = Item.Exercise2();
+
+        Solution1(Armour);
+        Solution2(GroupedArmour);
+    }
+
+    public void Solution1(List<Item> Armour)
+    {
+        int totalAgi = 0;
+        int totalStr = 0;
+        int totalInt = 0;
         
+        foreach (var item in Armour)
+        {
+            totalAgi += item.Agility;
+            totalStr += item.Strength;
+            totalInt += item.Intellect;
+        }
+        Debug.Log($"Exercise 1\n\t" +
+                  $"Agility: {totalAgi}\n\t" +
+                  $"Strength: {totalStr}\n\t" +
+                  $"Intellect: {totalInt}");
+    }
+
+    public void Solution2(List<Group> GroupedArmour)
+    {
+        GroupedArmour = Item.Exercise2();
         
-        Group head = new Group("Head");
-        List<Item> headItems = new List<Item>();
-        headItems.Add(new Item("Helm"));
-        headItems.Add(new Item("Amulet"));
-        head.Items = headItems;
-        GroupedArmour.Add(head);
+        var groupTotals = new List<Tuple<string, int, int, int>>();
         
-        Group torso = new Group("Torso");
-        List<Item> torsoItems = new List<Item>();
-        torsoItems.Add(new Item("Chest"));
-        torsoItems.Add(new Item("Pauldrons"));
-        torsoItems.Add(new Item("Belt"));
-        torso.Items = torsoItems;
-        GroupedArmour.Add(torso);
+        foreach (var group in GroupedArmour)
+        {
+            int totalAgi = 0;
+            int totalStr = 0;
+            int totalInt = 0;
+            foreach (var item in group.Items)
+            {
+                totalAgi += item.Agility;
+                totalStr += item.Strength;
+                totalInt += item.Intellect;
+            }
+            groupTotals.Add(new Tuple<string, int, int, int>(group.Name, totalAgi, totalStr, totalInt));
+        }
         
-        Group legs = new Group("Legs");
-        List<Item> legsItems = new List<Item>();
-        legsItems.Add(new Item("Greaves"));
-        legsItems.Add(new Item("Boots"));
-        legs.Items = legsItems;
-        GroupedArmour.Add(legs);
-        
-        Group hands = new Group("Hands");
-        List<Item> handsItems = new List<Item>();
-        handsItems.Add(new Item("Gloves"));
-        handsItems.Add(new Item("Rings"));
-        handsItems.Add(new Item("Weapons"));
-        hands.Items = handsItems;
-        GroupedArmour.Add(hands);
-        
-        Debug.Log(Armour);
-        Debug.Log(GroupedArmour);
+        Debug.Log("Exercise 2");
+        foreach (var tuple in groupTotals)
+        {
+            Debug.Log($"{tuple.Item1}\n\t" +
+                      $"Agi: {tuple.Item2}\n\t" +
+                      $"Str: {tuple.Item3}\n\t" +
+                      $"Int: {tuple.Item4}");
+        }
     }
 
     // Update is called once per frame
