@@ -9,6 +9,10 @@ type FRPEvent =
     | MouseMove
     | Update
     | MoveAxis
+    | CollisionEnter
+    | CollisionExit
+    | TriggerEnter
+    | TriggerExit
 
 type MouseButton =
     | Left = 0
@@ -23,6 +27,10 @@ type FRPBehaviour() =
     let MouseMoveEvent = new Event<float32*float32>()
     let MoveAxisEvent = new Event<float32*float32>()
     let UpdateEvent = new Event<_>()
+    let CollisionEnterEvent = new Event<Collision>()
+    let CollisionExitEvent = new Event<Collision>()
+    let TriggerEnterEvent = new Event<Collider>()
+    let TriggerExitEvent = new Event<Collider>()
 
     let AnyMouseButton () =
         let mouseButtons = Enum.GetValues(typeof<MouseButton>)
@@ -43,6 +51,10 @@ type FRPBehaviour() =
         | MouseMove -> MouseMoveEvent.Publish :?> IEvent<'T>
         | Update    -> UpdateEvent.Publish :?> IEvent<'T>
         | MoveAxis  -> MoveAxisEvent.Publish :?> IEvent<'T>
+        | TriggerEnter -> TriggerEnterEvent.Publish :?> IEvent<'T>
+        | TriggerExit-> TriggerExitEvent.Publish :?> IEvent<'T>
+        | CollisionEnter -> CollisionEnterEvent.Publish :?> IEvent<'T>
+        | CollisionExit -> CollisionExitEvent.Publish :?> IEvent<'T>
 
     member this.ReactTo<'T> (event:FRPEvent, condition:('T -> bool), handler:('T -> _)) =
         let e = this.GetEvent<'T> event
@@ -71,3 +83,15 @@ type FRPBehaviour() =
             MoveAxisEvent.Trigger(axisX,axisY)
 
         UpdateEvent.Trigger()
+
+    member this.OnCollisionEnter(collision:Collision) =
+        CollisionEnterEvent.Trigger(collision)
+
+    member this.OnCollisionExit(collision:Collision) =
+        CollisionExitEvent.Trigger(collision)
+
+    member this.OnTriggerEnter(collider:Collider) =
+        TriggerEnterEvent.Trigger(collider)
+
+    member this.OnTriggerExut(collider:Collider) =
+        TriggerExitEvent.Trigger(collider)
