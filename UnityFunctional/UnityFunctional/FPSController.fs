@@ -3,7 +3,7 @@ open UnityEngine
 open System
 
 type FRP_FPSController() =
-    inherit MonoBehaviour()
+    inherit FRPBehaviour()
 
     member this.start() =
         Debug.Log("Hello from F#")

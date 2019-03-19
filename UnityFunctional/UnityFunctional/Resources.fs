@@ -4,7 +4,7 @@ open UnityEngine
 open System
 
 type FRP_Resources() =
-    inherit MonoBehaviour()
+    inherit FRPBehaviour()
 
     [<SerializeField>]
     let mutable DildSild:int = 32

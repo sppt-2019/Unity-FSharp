@@ -4,7 +4,7 @@ open System
 open Interfaces
 
 type FRP_Shooter() =
-    inherit MonoBehaviour()
+    inherit FRPBehaviour()
     
     [<SerializeField>]
     let mutable Speed:float = 0.0
