@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7aea08109e8fa646b27fce218dc615b, type: 3}
   m_Name: Agility1
   m_EditorClassIdentifier: 
+  Picked: 0
   Strength: 0
-  Intellect: 15
-  Agility: 0
+  Intellect: 0
+  Agility: 15
   Sprite: {fileID: 21300000, guid: 3f6cc8930fcab3549a6fb058c404dbd1, type: 3}
   SubTalents:
   - {fileID: 11400000, guid: 491915f84b7202d40b72dff3a0134353, type: 2}
