@@ -20,52 +20,10 @@ class StateMachine : MonoBehaviour
 {
     public StateMaterial[] StateMaterials;
     public GameObject ShotPrefab;
-    private List<Tuple<State, Shooter>> _stateList = new List<Tuple<State, Shooter>>();
 
-    private void Update()
+    public void JoinState(Shooter shooter, State state)
     {
-        Execute(State.Attacking, ExecuteShoot);
-        Execute(State.Moving, MoveTo);
-        Execute(State.Fleeing, Flee);
-    }
 
-    private void Execute(State state, Action<Shooter> StateLogic)
-    {
-        var gosInState = _stateList.Where(t => t.Item1 == state);
-        foreach (var go in gosInState)
-        {
-            //Todo: StateLogic may alter collection, make a work around
-            StateLogic(go.Item2);
-        }
-    }
-
-    public void JoinState(Shooter ranger, State state)
-    {
-        ranger.GetComponent<Renderer>().material = StateMaterials.First(sm => sm.State == state).Material;
-
-        if(state == State.Moving)
-        {
-            var newTarget = new Vector3(
-                UnityEngine.Random.Range(-3.7f, 5.7f),
-                ranger.transform.position.y,
-                UnityEngine.Random.Range(-6f, 3.4f));
-            ranger.MoveTarget = newTarget;
-        }
-        else if(state == State.Fleeing)
-        {
-            ranger.Cooldowner = 4f;
-        }
-        else if(state == State.Attacking)
-        {
-            ranger.ShotsBeforeStateChange = 5;
-            ranger.Cooldowner = 0f;
-            ranger.AttackTarget = GameObject.FindGameObjectWithTag("Tower").transform;
-        }
-
-        var f = _stateList.Find(t => t.Item2 == ranger);
-        if (f != null)
-            _stateList.Remove(f);
-        _stateList.Add(new Tuple<State, Shooter>(state, ranger));
     }
 
     public void ExecuteShoot(Shooter s)
