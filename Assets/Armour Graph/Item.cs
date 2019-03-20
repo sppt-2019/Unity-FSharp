@@ -18,9 +18,9 @@ public class Item : ScriptableObject
     }
 
     public string Name { get; set; }
-    public int Intellect { get; set; } = 0;
-    public int Strength { get; set; } = 0;
-    public int Agility { get; set; } = 0;
+    public int Intellect { get; set; }
+    public int Strength { get; set; }
+    public int Agility { get; set; }
 
     public override string ToString()
     {

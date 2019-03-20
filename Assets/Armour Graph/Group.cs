@@ -16,11 +16,7 @@ public class Group : ScriptableObject
 
     public override string ToString()
     {
-        string itms = "\n";
-        foreach (var item in Items)
-        {
-            itms += item.ToString() + "\n";
-        }
+        var itms = "\n" + string.Join("\n", Items);
 
         return $"{Name:[}" + itms + "]";
     }
