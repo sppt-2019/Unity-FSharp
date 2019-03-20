@@ -1,9 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Annotations;
-using UnityEditor;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
+[System.Serializable]
+public enum ItemGroup
+{
+    Head, Torso, Legs, Hands
+}
+
+[CreateAssetMenu(fileName = "Item", menuName = "SPPT/Item", order = 1)]
 public class Item : ScriptableObject
 {
     private static readonly int MAX = 100;
@@ -34,69 +39,31 @@ public class Item : ScriptableObject
     }
 
     
-    public static List<Item> Exercise1()
+    public static IEnumerable<Item> Exercise1()
     {
-        List<Item> armour = new List<Item>();
-        
-        armour.Add(new Item("Helm", 4, 1.8f, 80, 1.1f, 13, 1.8f));
-        armour.Add(new Item("Amulet", 86, 1.7f, 72, 1.9f, 32, 2.0f));
-        armour.Add(new Item("Chest", 53, 1.6f, 55, 0.6f, 42, 1.0f));
-        armour.Add(new Item("Pauldrons", 16, 1.8f, 63, 0.9f, 95, 1.0f));
-        armour.Add(new Item("Belt", 80, 1.5f, 50, 1.5f, 5, 1.5f));
-        armour.Add(new Item("Greaves", 77, 1.8f, 94, 1.1f, 92, 1.1f));
-        armour.Add(new Item("Boots", 4, 0.9f, 61, 1.4f, 2, 1.8f));
-        armour.Add(new Item("Gloves", 25, 1.9f, 20, 1.0f, 40, 0.4f));
-        armour.Add(new Item("Rings", 81, 0.9f, 48, 1.8f, 18, 0.3f));
-        armour.Add(new Item("Weapons", 75, 1.3f, 79, 0.3f, 77, 0.4f));
-            
-        return armour;
+        return UnityEngine.Resources.LoadAll<Item>("Items");
     }
     
     public static List<Group> Exercise2()
     {
-        List<Group> GroupedArmour = new List<Group>();
-        
-        Group head = new Group("Head");
-        List<Item> headItems = new List<Item>();
-        headItems.Add(new Item("Helm", 4, 1.8f, 80, 1.1f, 13, 1.8f));
-        headItems.Add(new Item("Amulet",86, 1.7f, 72, 1.9f, 32, 2.0f));
-        head.Items = headItems;
-        GroupedArmour.Add(head);
-        
-        Group torso = new Group("Torso");
-        List<Item> torsoItems = new List<Item>();
-        torsoItems.Add(new Item("Chest", 53, 1.6f, 55, 0.6f, 42, 1.0f));
-        torsoItems.Add(new Item("Pauldrons", 16, 1.8f, 63, 0.9f, 95, 1.0f));
-        torsoItems.Add(new Item("Belt", 80, 1.5f, 50, 1.5f, 5, 1.5f));
-        torso.Items = torsoItems;
-        GroupedArmour.Add(torso);
-        
-        Group legs = new Group("Legs");
-        List<Item> legsItems = new List<Item>();
-        legsItems.Add(new Item("Greaves", 77, 1.8f, 94, 1.1f, 92, 1.1f));
-        legsItems.Add(new Item("Boots",4, 0.9f, 61, 1.4f, 2, 1.8f));
-        legs.Items = legsItems;
-        GroupedArmour.Add(legs);
-        
-        Group hands = new Group("Hands");
-        List<Item> handsItems = new List<Item>();
-        handsItems.Add(new Item("Gloves", 25, 1.9f, 20, 1.0f, 40, 0.4f));
-        handsItems.Add(new Item("Rings",81, 0.9f, 48, 1.8f, 18, 0.3f));
-        handsItems.Add(new Item("Weapons",75, 1.3f, 79, 0.3f, 77, 0.4f));
-        hands.Items = handsItems;
-        GroupedArmour.Add(hands);
-            
-        return GroupedArmour;
+        var items = UnityEngine.Resources.LoadAll<Item>("Items");
+        return new List<Group>{
+            new Group(ItemGroup.Head, items.Where(i => i.Group == ItemGroup.Head)),
+            new Group(ItemGroup.Torso, items.Where(i => i.Group == ItemGroup.Torso)),
+            new Group(ItemGroup.Legs, items.Where(i => i.Group == ItemGroup.Legs)),
+            new Group(ItemGroup.Hands, items.Where(i => i.Group == ItemGroup.Hands))
+        };
     }
 
-    public string Name { get; set; }
-    public int Intellect { get; set; } = 0;
-    public int Strength { get; set; } = 0;
-    public int Agility { get; set; } = 0;
-    
-    public float IntellectMod { get; set; }
-    public float StrengthMod { get; set; }
-    public float AgilityMod { get; set; }
+    public string Name;
+    public int Intellect;
+    public int Strength;
+    public int Agility;
+    public ItemGroup Group;
+
+    public float IntellectMod;
+    public float StrengthMod;
+    public float AgilityMod;
 
     public override string ToString()
     {

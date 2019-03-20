@@ -20,14 +20,7 @@ class StateMachine : MonoBehaviour
 {
     public StateMaterial[] StateMaterials;
     public GameObject ShotPrefab;
-    private List<Tuple<State, Shooter>> _stateList = new List<Tuple<State, Shooter>>();
-
-    private void Update()
-    {
-        Execute(State.Attacking, ExecuteShoot);
-        Execute(State.Moving, MoveTo);
-        Execute(State.Fleeing, Flee);
-    }
+    private List<Tuple<State, Shooter>> _stateList;
 
     private void Execute(State state, Action<Shooter> StateLogic)
     {
@@ -61,11 +54,6 @@ class StateMachine : MonoBehaviour
             ranger.Cooldowner = 0f;
             ranger.AttackTarget = GameObject.FindGameObjectWithTag("Tower").transform;
         }
-
-        var f = _stateList.Find(t => t.Item2 == ranger);
-        if (f != null)
-            _stateList.Remove(f);
-        _stateList.Add(new Tuple<State, Shooter>(state, ranger));
     }
 
     public void ExecuteShoot(Shooter s)

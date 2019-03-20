@@ -7,14 +7,14 @@ public class ArmourBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<Item> Armour = Item.Exercise1();
-        List<Group> GroupedArmour = Item.Exercise2();
+        var Armour = Item.Exercise1();
+        var GroupedArmour = Item.Exercise2();
 
         Solution1(Armour);
         Solution2(GroupedArmour);
     }
 
-    public void Solution1(List<Item> Armour)
+    public void Solution1(IEnumerable<Item> Armour)
     {
         int totalAgi = 0;
         int totalStr = 0;
@@ -36,7 +36,7 @@ public class ArmourBehaviour : MonoBehaviour
     {
         GroupedArmour = Item.Exercise2();
         
-        var groupTotals = new List<Tuple<string, int, int, int>>();
+        var groupTotals = new List<Tuple<ItemGroup, int, int, int>>();
         
         foreach (var group in GroupedArmour)
         {
@@ -63,7 +63,7 @@ public class ArmourBehaviour : MonoBehaviour
             totalStr = (int) (totalStr * strMod);
             totalInt = (int) (totalInt * intMod);
 
-            groupTotals.Add(new Tuple<string, int, int, int>(group.Name, totalAgi, totalStr, totalInt));
+            groupTotals.Add(new Tuple<ItemGroup, int, int, int>(group.GroupName, totalAgi, totalStr, totalInt));
         }
         
         string res = "Exercise 2\n";
