@@ -43,23 +43,38 @@ public class ArmourBehaviour : MonoBehaviour
             int totalAgi = 0;
             int totalStr = 0;
             int totalInt = 0;
+
+            float agiMod = 0.0f;
+            float strMod = 0.0f;
+            float intMod = 0.0f;
+            
             foreach (var item in group.Items)
             {
                 totalAgi += item.Agility;
                 totalStr += item.Strength;
                 totalInt += item.Intellect;
+                
+                agiMod += item.AgilityMod;
+                strMod += item.StrengthMod;
+                intMod += item.IntellectMod;
             }
+
+            totalAgi = (int) (totalAgi * agiMod);
+            totalStr = (int) (totalStr * strMod);
+            totalInt = (int) (totalInt * intMod);
+
             groupTotals.Add(new Tuple<string, int, int, int>(group.Name, totalAgi, totalStr, totalInt));
         }
         
-        Debug.Log("Exercise 2");
+        string res = "Exercise 2\n";
         foreach (var tuple in groupTotals)
         {
-            Debug.Log($"{tuple.Item1}\n\t" +
+            res += $"{tuple.Item1}\n\t" +
                       $"Agi: {tuple.Item2}\n\t" +
                       $"Str: {tuple.Item3}\n\t" +
-                      $"Int: {tuple.Item4}");
+                      $"Int: {tuple.Item4}\n";
         }
+        Debug.Log(res);
     }
 
     // Update is called once per frame
