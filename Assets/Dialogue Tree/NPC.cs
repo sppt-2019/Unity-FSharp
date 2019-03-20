@@ -1,19 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
     Node currentNode;
-    List<Node> nodes = new List<Node>();
-
+    List<Node> nodes;
+    
+    public void say( )
+    {
+        outText.text = currentNode.Line;
+    }
+    
     public void say(Node node)
     {
         currentNode = node;
         outText.text = node.Line;
     }
     
-    public void say( )
+    public void say(Node node, List<Node> options)
     {
         outText.text = currentNode.Line;
     }
@@ -24,21 +30,42 @@ public class NPC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nodes.Add(new Node("welcome", "Velkommen til vores lille by, hvad kan jeg hjælpe med?", "work"));
-        nodes.Add(new Node("work", "Min hund er blevet væk og jeg skulle alligevel ud og lede efter den. Har du brug for hjælp?", 
-            new List<string>{ "yes", "no"}));
-        nodes.Add(new Node("yes", "Fantastisk, mit sværd er dit!", "companion"));
-        nodes.Add(new Node("no", "Ærgeligt, sig til hvis du ombestemmer dig.", "work"));
-        nodes.Add(new Node("found", "MIN LILLE HUND! Den har været væk i flere dage. Tusind tak!", "gift"));
-        nodes.Add(new Node("move", "Her i byen taler vi pænt til hinanden!", 
-            new List<string>{ "die", "sorry"}));
-        nodes.Add(new Node("die", "VI BLIVER ANGREBET!", "hostile"));
-        nodes.Add(new Node("sorry", "Det er i orden. Det kan ske for alle", "work"));
-        nodes.Add(new Node("goodbye", "Held og lykke på dine rejser", "no"));
-
+        nodes = Node.GetTree();
         currentNode = nodes[0];
-        say();
 
+        myNode nodeRoot = CreateTree(nodes[0]);
+
+        say(nodeRoot);
+    }
+
+    private myNode CreateTree(Node node)
+    {
+        var res = new myNode(node.Name, node.Line);
+        
+        foreach (var childName in node.ChildNames)
+        {
+            myNode child = CreateTree(nodes.Find(n => n.Name == childName));
+            res.Children.Add(child);
+        }
+        
+        return res;
+    }
+
+    private class myNode : Node
+    {
+        public List<myNode> Children { get; set; }
+
+        public myNode(string name, string line) : base(name, line)
+        {
+        }
+
+        private myNode(string name, string line, string child) : base(name, line, child)
+        {
+        }
+
+        public myNode(string name, string line, List<string> children) : base(name, line, children)
+        {
+        }
     }
 
     // Update is called once per frame

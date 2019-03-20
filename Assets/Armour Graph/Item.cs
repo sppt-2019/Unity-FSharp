@@ -13,9 +13,24 @@ public class Item : ScriptableObject
     {
         Name = name;
         Intellect = Random.Range(MIN, MAX);
+        IntellectMod = Random.Range(0.5f, 2.0f);
         Strength = Random.Range(MIN, MAX);
+        StrengthMod = Random.Range(0.5f, 2.0f);
         Agility = Random.Range(MIN, MAX);
+        AgilityMod = Random.Range(0.5f, 2.0f);
         
+    }
+    
+    public Item(string name, int intellect, float intMod, int strength, float strMod, int agility, float agiMod)
+    {
+        Name = name;
+        Intellect = intellect;
+        IntellectMod = intMod;
+        Strength = strength;
+        StrengthMod = strMod;
+        Agility = agility;
+        AgilityMod = agiMod;
+
     }
 
     
@@ -23,16 +38,16 @@ public class Item : ScriptableObject
     {
         List<Item> armour = new List<Item>();
         
-        armour.Add(new Item("Helm"));
-        armour.Add(new Item("Amulet"));
-        armour.Add(new Item("Chest"));
-        armour.Add(new Item("Pauldrons"));
-        armour.Add(new Item("Belt"));
-        armour.Add(new Item("Greaves"));
-        armour.Add(new Item("Boots"));
-        armour.Add(new Item("Gloves"));
-        armour.Add(new Item("Rings"));
-        armour.Add(new Item("Weapons"));
+        armour.Add(new Item("Helm", 4, 1.8f, 80, 1.1f, 13, 1.8f));
+        armour.Add(new Item("Amulet", 86, 1.7f, 72, 1.9f, 32, 2.0f));
+        armour.Add(new Item("Chest", 53, 1.6f, 55, 0.6f, 42, 1.0f));
+        armour.Add(new Item("Pauldrons", 16, 1.8f, 63, 0.9f, 95, 1.0f));
+        armour.Add(new Item("Belt", 80, 1.5f, 50, 1.5f, 5, 1.5f));
+        armour.Add(new Item("Greaves", 77, 1.8f, 94, 1.1f, 92, 1.1f));
+        armour.Add(new Item("Boots", 4, 0.9f, 61, 1.4f, 2, 1.8f));
+        armour.Add(new Item("Gloves", 25, 1.9f, 20, 1.0f, 40, 0.4f));
+        armour.Add(new Item("Rings", 81, 0.9f, 48, 1.8f, 18, 0.3f));
+        armour.Add(new Item("Weapons", 75, 1.3f, 79, 0.3f, 77, 0.4f));
             
         return armour;
     }
@@ -43,31 +58,31 @@ public class Item : ScriptableObject
         
         Group head = new Group("Head");
         List<Item> headItems = new List<Item>();
-        headItems.Add(new Item("Helm"));
-        headItems.Add(new Item("Amulet"));
+        headItems.Add(new Item("Helm", 4, 1.8f, 80, 1.1f, 13, 1.8f));
+        headItems.Add(new Item("Amulet",86, 1.7f, 72, 1.9f, 32, 2.0f));
         head.Items = headItems;
         GroupedArmour.Add(head);
         
         Group torso = new Group("Torso");
         List<Item> torsoItems = new List<Item>();
-        torsoItems.Add(new Item("Chest"));
-        torsoItems.Add(new Item("Pauldrons"));
-        torsoItems.Add(new Item("Belt"));
+        torsoItems.Add(new Item("Chest", 53, 1.6f, 55, 0.6f, 42, 1.0f));
+        torsoItems.Add(new Item("Pauldrons", 16, 1.8f, 63, 0.9f, 95, 1.0f));
+        torsoItems.Add(new Item("Belt", 80, 1.5f, 50, 1.5f, 5, 1.5f));
         torso.Items = torsoItems;
         GroupedArmour.Add(torso);
         
         Group legs = new Group("Legs");
         List<Item> legsItems = new List<Item>();
-        legsItems.Add(new Item("Greaves"));
-        legsItems.Add(new Item("Boots"));
+        legsItems.Add(new Item("Greaves", 77, 1.8f, 94, 1.1f, 92, 1.1f));
+        legsItems.Add(new Item("Boots",4, 0.9f, 61, 1.4f, 2, 1.8f));
         legs.Items = legsItems;
         GroupedArmour.Add(legs);
         
         Group hands = new Group("Hands");
         List<Item> handsItems = new List<Item>();
-        handsItems.Add(new Item("Gloves"));
-        handsItems.Add(new Item("Rings"));
-        handsItems.Add(new Item("Weapons"));
+        handsItems.Add(new Item("Gloves", 25, 1.9f, 20, 1.0f, 40, 0.4f));
+        handsItems.Add(new Item("Rings",81, 0.9f, 48, 1.8f, 18, 0.3f));
+        handsItems.Add(new Item("Weapons",75, 1.3f, 79, 0.3f, 77, 0.4f));
         hands.Items = handsItems;
         GroupedArmour.Add(hands);
             
@@ -78,6 +93,10 @@ public class Item : ScriptableObject
     public int Intellect { get; set; } = 0;
     public int Strength { get; set; } = 0;
     public int Agility { get; set; } = 0;
+    
+    public float IntellectMod { get; set; }
+    public float StrengthMod { get; set; }
+    public float AgilityMod { get; set; }
 
     public override string ToString()
     {
