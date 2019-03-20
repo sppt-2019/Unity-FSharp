@@ -138,7 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 10647957}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 701596297, guid: dbfa972955d157d4c92f9c7f01d6a402, type: 3}
+  m_Script: {fileID: 701596297, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DildSild: 32
@@ -763,7 +763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &306408975
 Transform:
   m_ObjectHideFlags: 0
@@ -1621,7 +1621,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 793600414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1232165560, guid: dbfa972955d157d4c92f9c7f01d6a402, type: 3}
+  m_Script: {fileID: 1232165560, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DildSild: {fileID: 97838677}
@@ -2818,7 +2818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1559835145
 Transform:
   m_ObjectHideFlags: 0

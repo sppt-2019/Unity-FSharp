@@ -9,10 +9,13 @@ type FRP_ThirdPersonController() =
     let mutable JumpSpeed = 3.0f
     [<SerializeField>]
     let mutable MoveSpeed = 3.0f
+
     [<SerializeField>]
     let mutable RotationSpeed = 25.0f
     [<SerializeField>]
     let mutable Camera:Camera = null
+    [<SerializeField>]
+    let mutable HorizontalRotator:Transform = null
     [<SerializeField>]
     let mutable CameraRotationSpeed = 50.0f
 
@@ -46,8 +49,8 @@ type FRP_ThirdPersonController() =
             FRPEvent.MouseMove,
             (fun m -> 
                 let (deltaX, deltaY) = m.Deconstruct()
-                Camera.transform.RotateAround(this.transform.position, this.transform.up, CameraRotationSpeed * Time.deltaTime * deltaX)
-                Camera.transform.RotateAround(this.transform.position, new Vector3(1.0f, 0.0f, 0.0f), CameraRotationSpeed * Time.deltaTime * deltaY)
+                Camera.transform.RotateAround(this.transform.position, Vector3.up, CameraRotationSpeed * Time.deltaTime * deltaX)
+                HorizontalRotator.RotateAround(this.transform.position, Vector3.right, CameraRotationSpeed * Time.deltaTime * deltaY)
                 //Todo: Rotate camera with vertical mouse movements
             )
         )

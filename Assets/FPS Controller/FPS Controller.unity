@@ -342,11 +342,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 232000679}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1121347962, guid: dbfa972955d157d4c92f9c7f01d6a402, type: 3}
+  m_Script: {fileID: 1121347962, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
-  RotationSpeed: 180
+  MoveSpeed: 5
+  RotationSpeed: 25
   JumpSpeed: 8
   Camera: {fileID: 2009366887}
 --- !u!54 &232000684

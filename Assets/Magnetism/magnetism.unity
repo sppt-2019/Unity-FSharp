@@ -606,10 +606,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1392927447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1615517120, guid: dbfa972955d157d4c92f9c7f01d6a402, type: 3}
+  m_Script: {fileID: -1615517120, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 2
+  MoveSpeed: 3
 --- !u!4 &1392927449
 Transform:
   m_ObjectHideFlags: 0
