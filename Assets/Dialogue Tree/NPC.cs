@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
@@ -32,39 +34,46 @@ public class NPC : MonoBehaviour
     {
         nodes = Node.GetTree();
         currentNode = nodes[0];
+        var nodeRoot = CreateTree(nodes[0]);
 
-        myNode nodeRoot = CreateTree(nodes[0]);
-
-        say(nodeRoot);
+        Debug.Log(nodeRoot);
+        
+        //say(nodeRoot);
     }
 
-    private myNode CreateTree(Node node)
+    private RepresentationNode CreateTree(Node node)
     {
-        var res = new myNode(node.Name, node.Line);
+        Debug.Log(node.Name);
+        var res = new RepresentationNode(node.Name, node.Line);
         
-        foreach (var childName in node.ChildNames)
+        foreach (var childName in node.ChildNameNames)
         {
-            myNode child = CreateTree(nodes.Find(n => n.Name == childName));
+            var childNode = nodes.Find(n => n.Name == childName);
+            if (childNode == null) continue;
+            var child = CreateTree(childNode);
             res.Children.Add(child);
         }
-        
         return res;
     }
 
-    private class myNode : Node
+    private class RepresentationNode : Node
     {
-        public List<myNode> Children { get; set; }
+        public List<RepresentationNode> Children { get; set; }
 
-        public myNode(string name, string line) : base(name, line)
+        public RepresentationNode(string name, string line) : base(name, line)
         {
+            Children = new List<RepresentationNode>();
         }
 
-        private myNode(string name, string line, string child) : base(name, line, child)
+        private RepresentationNode(string name, string line, string child) : base(name, line, child)
         {
+            Children = new List<RepresentationNode>();
+            throw new NotImplementedException("You are not supposed to use this.");
         }
 
-        public myNode(string name, string line, List<string> children) : base(name, line, children)
+        public RepresentationNode(string name, string line, List<string> childNames, List<RepresentationNode> children) : base(name, line, childNames)
         {
+            Children = children;
         }
     }
 

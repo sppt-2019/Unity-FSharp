@@ -8,20 +8,20 @@ public class Node : ScriptableObject
     {
         Name = name;
         Line = line;
-        ChildNames = new List<string>();
+        ChildNameNames = new List<string>();
     }
     public Node(string name, string line, string child)
     {
         Name = name;
         Line = line;
-        ChildNames = new List<string>();
-        ChildNames.Add(child);
+        ChildNameNames = new List<string>();
+        ChildNameNames.Add(child);
     }
-    public Node(string name, string line, List<string> children)
+    public Node(string name, string line, List<string> childNames)
     {
         Name = name;
         Line = line;
-        ChildNames = children;
+        ChildNameNames = childNames;
     }
 
     public static List<Node> GetTree()
@@ -49,5 +49,5 @@ public class Node : ScriptableObject
     
     public string Name { get; }
     public string Line { get; }
-    public List<string> ChildNames { get; set; }
+    public List<string> ChildNameNames { get; set; }
 }
