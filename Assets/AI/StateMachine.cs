@@ -43,7 +43,7 @@ class StateMachine : MonoBehaviour
     {
         ranger.GetComponent<Renderer>().material = StateMaterials.First(sm => sm.State == state).Material;
 
-        if(state == State.Moving)
+        if (state == State.Moving)
         {
             var newTarget = new Vector3(
                 UnityEngine.Random.Range(-3.7f, 5.7f),
@@ -51,11 +51,11 @@ class StateMachine : MonoBehaviour
                 UnityEngine.Random.Range(-6f, 3.4f));
             ranger.MoveTarget = newTarget;
         }
-        else if(state == State.Fleeing)
+        else if (state == State.Fleeing)
         {
             ranger.Cooldowner = 4f;
         }
-        else if(state == State.Attacking)
+        else if (state == State.Attacking)
         {
             ranger.ShotsBeforeStateChange = 5;
             ranger.Cooldowner = 0f;
