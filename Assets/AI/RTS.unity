@@ -979,7 +979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1056795413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   NumberOfRangers: 10
   XBoundary: {x: -3.8, y: 5.8}
   ZBoundary: {x: -6.1, y: 3.5}
-  UseFRP: 0
+  UseFRP: 1
 --- !u!4 &1351931617
 Transform:
   m_ObjectHideFlags: 0
@@ -1575,7 +1575,7 @@ GameObject:
   - component: {fileID: 1932910222}
   m_Layer: 0
   m_Name: FRP_StateMachine
-  m_TagString: Untagged
+  m_TagString: StateMachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1589,7 +1589,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1932910221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -479319375, guid: dbfa972955d157d4c92f9c7f01d6a402, type: 3}
+  m_Script: {fileID: -479319375, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StateMaterials:
@@ -1599,7 +1599,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 7f87c2fd4ae7eeb469719cc939e649dd, type: 2}
   - State: 2
     Material: {fileID: 2100000, guid: 742c09886101ef240823d021a1769e24, type: 2}
-  ShotPrefab: {fileID: 3304948381246562283, guid: 6108728a9844dc044adebd9c5118ca35,
+  ShotPrefab: {fileID: 3304948381246562283, guid: b7b1ec2f6a2391f4cbf15308b528bf7e,
     type: 3}
 --- !u!4 &1932910223
 Transform:
