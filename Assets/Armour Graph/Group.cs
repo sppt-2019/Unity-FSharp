@@ -1,27 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Group : ScriptableObject
 {
-    public Group(string name)
+    public Group(ItemGroup group, IEnumerable<Item> itemsInGroup)
     {
-        Name = name;
-        Items = new List<Item>();
+        GroupName = group;
+        Items = itemsInGroup.ToList();
     }
 
-    public string Name { get; set; }
+    public ItemGroup GroupName { get; set; }
 
     public List<Item> Items { get; set; }
 
     public override string ToString()
     {
-        string itms = "\n";
-        foreach (var item in Items)
-        {
-            itms += item.ToString() + "\n";
-        }
-
-        return $"{Name:[}" + itms + "]";
+        var itms = "\n" + string.Join("\n", Items);
+        
+        return $"{GroupName.ToString()}:[" + itms + "]";
     }
 }
