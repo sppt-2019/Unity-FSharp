@@ -1,16 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Group : ScriptableObject
 {
-    public Group(string name)
+    public Group(ItemGroup itemGroup, IEnumerable<Item> itemsInGroup)
     {
-        Name = name;
-        Items = new List<Item>();
+        IemmGroup = itemGroup;
+        Items = itemsInGroup.ToList();
     }
 
-    public string Name { get; set; }
+    public ItemGroup IemmGroup { get; set; }
 
     public List<Item> Items { get; set; }
 
@@ -18,6 +19,6 @@ public class Group : ScriptableObject
     {
         var itms = "\n" + string.Join("\n", Items);
 
-        return $"{Name:[}" + itms + "]";
+        return $"{IemmGroup.ToString()}" + itms + "]";
     }
 }
