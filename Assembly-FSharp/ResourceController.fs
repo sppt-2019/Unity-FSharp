@@ -4,7 +4,7 @@ open UnityEngine
 open System
 
 type FRP_ResourceController() =
-    inherit MonoBehaviour()
+    inherit FRPBehaviour()
 
     [<SerializeField>]
     let mutable DildSild:UnityEngine.UI.Text = null

@@ -5,11 +5,11 @@
     <RootNamespace>Assembly_FSharp</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FRPBehaviour.fs" />
+    <Compile Include="Shot.fs" />
     <Compile Include="FPSController.fs" />
     <Compile Include="IStateMachineEntity.fs" />
-    <Compile Include="DialogueTree.fs" />
     <Compile Include="StateMachine.fs" />
-    <Compile Include="Library.fs" />
     <Compile Include="Magnetism.fs" />
     <Compile Include="ResourceController.fs" />
     <Compile Include="Resources.fs" />
@@ -272,11 +272,14 @@
     <Reference Include="UnityEditor.LinuxStandalone.Extensions">
       <HintPath>/home/tgm/Unity/Hub/Editor/2018.3.8f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
-      <HintPath>/mnt/storage/repos/Unity-FSharp/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
+    <Reference Include="Assembly-FSharp">
+      <HintPath>/mnt/storage/repos/Unity-FSharp/Assets/Assembly-FSharp.dll</HintPath>
     </Reference>
     <Reference Include="FSharp.Core">
-      <HintPath>/mnt/storage/repos/Unity-FSharp/Assets/Frameworks/FSharp.Core.dll</HintPath>
+      <HintPath>/mnt/storage/repos/Unity-FSharp/Assets/FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
+      <HintPath>/mnt/storage/repos/Unity-FSharp/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>/mnt/storage/repos/Unity-FSharp/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -872,8 +875,11 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>/home/tgm/Unity/Hub/Editor/2018.3.8f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-FSharp">
+      <HintPath>/mnt/storage/repos/Unity-FSharp/Assets/Assembly-FSharp.dll</HintPath>
+    </Reference>
     <Reference Include="FSharp.Core">
-      <HintPath>/mnt/storage/repos/Unity-FSharp/Assets/Frameworks/FSharp.Core.dll</HintPath>
+      <HintPath>/mnt/storage/repos/Unity-FSharp/Assets/FSharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>/mnt/storage/repos/Unity-FSharp/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
