@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Item", menuName = "SPPT/Item", order = 1)]
 public class Item : ScriptableObject
 {
     private static readonly int MAX = 100;

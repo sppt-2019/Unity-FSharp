@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Talent", menuName = "Talent", order = 1)]
+[CreateAssetMenu(fileName = "Talent", menuName = "SPPT/Talent", order = 1)]
 public class Talent : ScriptableObject
 {
     public bool Picked;
