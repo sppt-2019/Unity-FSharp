@@ -9,13 +9,14 @@ public class NPC : MonoBehaviour
 {
     Node currentNode;
     List<Node> nodes;
+    private List<RepresentationNode> existingNodes = new List<RepresentationNode>();
     
     public void say( )
     {
         outText.text = currentNode.Line;
     }
     
-    public void say(Node node)
+    public void Say(Node node)
     {
         currentNode = node;
         outText.text = node.Line;
@@ -34,26 +35,56 @@ public class NPC : MonoBehaviour
     {
         nodes = Node.GetTree();
         currentNode = nodes[0];
-        var nodeRoot = CreateTree(nodes[0]);
+        var nodeRoot = Solution1(nodes[0], 10);
 
-        Debug.Log(nodeRoot);
-        
-        //say(nodeRoot);
+        Say(nodeRoot);
+
+        var traces = Solution2(nodeRoot);
+        Debug.Log(traces);
+        Debug.Log(traces.Count);
     }
 
-    private RepresentationNode CreateTree(Node node)
+
+    #region Solution1
+
+    private RepresentationNode Solution1(Node node, int limit)
     {
-        Debug.Log(node.Name);
+        if (limit <= 0)
+        {
+            Debug.Log("Limit Reached!");
+            return null;
+        }
         var res = new RepresentationNode(node.Name, node.Line);
+        var eNode = Exists(res);
+        if (eNode != null) return eNode;
         
         foreach (var childName in node.ChildNameNames)
         {
             var childNode = nodes.Find(n => n.Name == childName);
             if (childNode == null) continue;
-            var child = CreateTree(childNode);
-            res.Children.Add(child);
+            var existNode = Exists(childName);
+            if (existNode != null)
+            {
+                res.Children.Add(existNode);
+            } else {
+                var child = Solution1(childNode, limit - 1);
+                existingNodes.Add(child);
+                res.Children.Add(child);
+            }
         }
         return res;
+    }
+
+    private RepresentationNode Exists (RepresentationNode node)
+    {
+        var option = existingNodes.Find(n => n.Name == node.Name);
+        return option != null ? option : node;
+    }
+    
+    private RepresentationNode Exists (String name)
+    {
+        var option = existingNodes.Find(n => n.Name == name);
+        return option;
     }
 
     private class RepresentationNode : Node
@@ -76,6 +107,52 @@ public class NPC : MonoBehaviour
             Children = children;
         }
     }
+
+    #endregion
+
+    #region Solution2
+
+    private List<List<RepresentationNode>> Solution2(RepresentationNode root)
+    {
+        var traces = new List<List<RepresentationNode>>();
+        Trace(new List<RepresentationNode>(), ref traces, root, root.Name );
+        return traces;
+    }
+
+    private void Trace(List<RepresentationNode> partialTrace, ref List<List<RepresentationNode>> traces, RepresentationNode node, string rootName)
+    {
+        var trace = partialTrace;
+        trace.Add(node);
+
+        if (IsTraceEnd(node, rootName))
+        {
+            if (UniqueAddition(trace, ref traces) == false)
+            {
+                return;
+            }
+        }
+
+        foreach (var child in node.Children)
+        {
+            Trace(trace, ref traces, child, rootName);
+        }
+    }
+    
+    private bool IsTraceEnd(RepresentationNode node, string rootName)
+    {
+        return node.Name == rootName || node.Children.Count <= 0;
+    }
+
+    private bool UniqueAddition(List<RepresentationNode> trace, ref List<List<RepresentationNode>> traces)
+    {
+        var existingTrace = traces.Find(t => t.Equals(trace));
+
+        if (existingTrace == null) return false;
+        traces.Add(trace);
+        return true;
+    }
+
+    #endregion
 
     // Update is called once per frame
     void Update()
