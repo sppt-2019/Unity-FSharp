@@ -6,6 +6,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="FRPBehaviour.fs" />
+    <Compile Include="ItemStore.fs" />
+    <Compile Include="ArmourBehaviour.fs" />
+    <Compile Include="NPC.fs" />
     <Compile Include="Shot.fs" />
     <Compile Include="FPSController.fs" />
     <Compile Include="IStateMachineEntity.fs" />
@@ -26,6 +29,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Users\tobia\Documents\Unity-F#\Assembly-FSharp\build\Assembly-CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/tobia/Documents/Unity-F#/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -274,15 +280,6 @@
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
-      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-FSharp">
-      <HintPath>C:/Users/tobia/Documents/Unity-F#/Assets/Assembly-FSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="FSharp.Core">
-      <HintPath>C:/Users/tobia/Documents/Unity-F#/Assets/FSharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
       <HintPath>C:/Users/tobia/Documents/Unity-F#/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
@@ -877,12 +874,6 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-FSharp">
-      <HintPath>C:/Users/tobia/Documents/Unity-F#/Assets/Assembly-FSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="FSharp.Core">
-      <HintPath>C:/Users/tobia/Documents/Unity-F#/Assets/FSharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>C:/Users/tobia/Documents/Unity-F#/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
