@@ -9,17 +9,17 @@ using UnityEditor;
 using Debug = UnityEngine.Debug;
 
 
-public class FSharpImporter : AssetPostprocessor
+public class FSharpImporter
 {
 	public const string MenuItemRecompile = "F#/Compile F#";
-	public const string MenuItemAutoCompile = "F#/Enable Auto-compile";
 	public const string MenuItemIsDebug = "F#/Show debug information";
 	public const string MenuItemCreateFSharpProject = "F#/Create F# project";
 
-	private const string Version = "1.1.2";
+	private const string Version = "1.1.7";
+
+	private static readonly string[] IgnoredFiles = { "Assembly-FSharp.dll", "FSharp.Core.dll" };
 	
 	private static bool _compiling = false;
-	private static bool _autoRecompile = EditorPrefs.GetBool(MenuItemAutoCompile, false);
 	private static bool _isDebug = EditorPrefs.GetBool(MenuItemIsDebug, true);
 	
 	private static readonly Regex MatchReferences =
@@ -35,26 +35,17 @@ public class FSharpImporter : AssetPostprocessor
 		{
 			Debug.Log("No build tools found :(\nRequires 'dotnet' to be installed and available in a terminal");
 		}
-		Menu.SetChecked(MenuItemAutoCompile, EditorPrefs.GetBool(MenuItemAutoCompile, false));
 		Menu.SetChecked(MenuItemIsDebug, EditorPrefs.GetBool(MenuItemIsDebug, true));
-	}
-
-	static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
-	{
-		if (!_autoRecompile) return;
-		if (_isDebug) Debug.Log ("Starting automatic recompilation");
-		InvokeCompiler();
 	}
 	
 	[MenuItem(MenuItemRecompile, false, 1)]
 	public static void InvokeCompiler()
 	{
-		/*if (!_dotnetAvailable)
+		if (_compiling)
 		{
-			Debug.Log($"The dotnet compiler is not available");
+			Debug.Log("Already compiling...");
 			return;
-		}*/
-		if (_compiling) return;
+		}
 		_compiling = true;
 		try
 		{
@@ -72,20 +63,12 @@ public class FSharpImporter : AssetPostprocessor
 		}
 		_compiling = false;
 	}
-
-//	[MenuItem(MenuItemRecompile, true, 1)]
-//	public static bool IsReadyForCompilation() =>
-//		!_compiling && _dotnetAvailable;
 	
-	
-	[MenuItem(MenuItemAutoCompile, false, 52)]
-	public static void ToggleAutoCompile()
+	[MenuItem(MenuItemRecompile, true, 1)]
+	public static bool CanInvokeCompiler()
 	{
-		_autoRecompile = !_autoRecompile;
-		Menu.SetChecked(MenuItemAutoCompile, _autoRecompile);
-		EditorPrefs.SetBool(MenuItemAutoCompile, _autoRecompile);
+		return !_compiling;
 	}
-	
 	
 	[MenuItem(MenuItemIsDebug, false, 53)]
 	public static void ToggleIsDebug()
@@ -120,11 +103,15 @@ public class FSharpImporter : AssetPostprocessor
 		return new Lazy<ReferenceContainer>(() =>
 		{
 			var started = DateTime.UtcNow;
-			var unityCsProjects = Directory.EnumerateFiles(dir, "*.csproj", SearchOption.TopDirectoryOnly);
-
+			var unityCsProjects = Directory.GetFiles(dir, "*.csproj", SearchOption.TopDirectoryOnly);
 			if (!unityCsProjects.Any()) throw new FileNotFoundException("No Unity projects to copy references from found. Please add a C# script, open it, and try again");
 			
 			var allReferences = new HashSet<Reference>();
+			var csDlls = Directory.GetFiles(dir, "Assembly-CSharp.dll", SearchOption.AllDirectories);
+			var properDll = csDlls.FirstOrDefault(dll => dll.Contains("Release")) ?? csDlls.FirstOrDefault();
+
+			if (properDll != null) allReferences.Add(new Reference("Assembly-CSharp", properDll));
+			
 			foreach (var project in unityCsProjects)
 			{
 				var csProjectContent = File.ReadAllText(project);
@@ -133,10 +120,10 @@ public class FSharpImporter : AssetPostprocessor
 				{
 					var include = match.Groups[1].Value;
 					var hintPath = match.Groups[2].Value;
+					if (IgnoredFiles.Any(file => hintPath.EndsWith(file))) continue;
 					allReferences.Add(new Reference(include, hintPath));
 				}
 			}
-
 
 			var unityEngine = allReferences.FirstOrDefault(r => r.Include == "UnityEngine");
 			var unityEditor = allReferences.FirstOrDefault(r => r.Include == "UnityEditor");
@@ -162,6 +149,7 @@ public class FSharpImporter : AssetPostprocessor
 		var references = lazyReferenceContainer.Value;
 		var fsProjectDocument = XDocument.Parse(fsProjectContent);
 		
+		// Remove existing references
 		fsProjectDocument
 			.Descendants("ItemGroup")
 			.Where(ig => ig.FirstNode is XElement el && el.Name == "Reference")
@@ -242,9 +230,13 @@ public class FSharpImporter : AssetPostprocessor
 			Process.Start(startInfo)?.WaitForExit();
 			return true;
 		}
-		catch (Exception)
+		catch (FileNotFoundException)
 		{
 			return false;
+		}
+		catch (Exception)
+		{
+			return true;
 		}
 	}
 

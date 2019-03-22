@@ -50,7 +50,7 @@ type FRP_ThirdPersonController() =
             (fun m -> 
                 let (deltaX, deltaY) = m.Deconstruct()
                 Camera.transform.RotateAround(this.transform.position, Vector3.up, CameraRotationSpeed * Time.deltaTime * deltaX)
-                HorizontalRotator.RotateAround(this.transform.position, Vector3.right, CameraRotationSpeed * Time.deltaTime * deltaY)
+                Camera.transform.RotateAround(this.transform.position, Camera.transform.right, CameraRotationSpeed * Time.deltaTime * deltaY)
                 //Todo: Rotate camera with vertical mouse movements
             )
         )
