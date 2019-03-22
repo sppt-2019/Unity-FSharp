@@ -8773,7 +8773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1874200669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8809,13 +8809,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1893476307}
+  - component: {fileID: 1893476308}
   m_Layer: 0
   m_Name: TalentTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1893476307
 Transform:
   m_ObjectHideFlags: 0
@@ -8830,6 +8831,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1893476308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893476306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6218932f8be11345b75a523fdf75074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseTalent: {fileID: 11400000, guid: ff02250266b7fd74f90aa7d101a8aa63, type: 2}
 --- !u!1 &1899351602
 GameObject:
   m_ObjectHideFlags: 0
