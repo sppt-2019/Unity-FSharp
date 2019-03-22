@@ -26,6 +26,14 @@ public class Node
         ChildNames.Add(child);
         Reaction = NPCReaction.NoReaction;
     }
+    public Node(string name, string line, string child, NPCReaction reaction)
+    {
+        Name = name;
+        Line = line;
+        ChildNames = new List<string>();
+        ChildNames.Add(child);
+        Reaction = reaction;
+    }
     public Node(string name, string line, List<string> children)
     {
         Name = name;

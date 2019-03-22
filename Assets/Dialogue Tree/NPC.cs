@@ -58,7 +58,7 @@ public class NPC : MonoBehaviour
         var eNode = Exists(res);
         if (eNode != null) return eNode;
         
-        foreach (var childName in node.ChildNameNames)
+        foreach (var childName in node.ChildNames)
         {
             var childNode = nodes.Find(n => n.Name == childName);
             if (childNode == null) continue;
