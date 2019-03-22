@@ -15,7 +15,7 @@ type FRP_Resources() =
     [<DefaultValue>]
     val mutable ResourceController:FRP_ResourceController
 
-    let convRatio = [17*8;8;1]
+    let convRatio = [17*8;17;1]
 
     let sumCurrency (currencies:int list) =
         currencies
@@ -28,7 +28,7 @@ type FRP_Resources() =
     let combine totalDildSils =
         let rVildIld = totalDildSils / convRatio.[0]
         let rMildAbild = (totalDildSils - (rVildIld * convRatio.[0])) / convRatio.[1]
-        let rDildSild = (totalDildSils - (rVildIld * convRatio.[0]) - (rMildAbild * convRatio.[1])) / convRatio.[2]
+        let rDildSild = totalDildSils - (rVildIld * convRatio.[0]) - (rMildAbild * convRatio.[1])
         (rDildSild, rMildAbild, rVildIld)
 
     let canBuy dildSild mildAbild vildIld =
@@ -50,6 +50,8 @@ type FRP_Resources() =
 
     member this.Start() =
         this.ResourceController.UpdateResources DildSild MildAbild Vildild
+        Debug.Log("Total DildSild: " + (sumCurrency [Vildild;MildAbild;DildSild]).ToString())
+        
         let (ds, ma, vi) = combine (sumCurrency [Vildild;MildAbild;DildSild])
         this.ResourceController.UpdateResults ds ma vi
 
