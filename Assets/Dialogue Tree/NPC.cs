@@ -119,37 +119,34 @@ public class NPC : MonoBehaviour
         return traces;
     }
 
-    private void Trace(List<RepresentationNode> partialTrace, ref List<List<RepresentationNode>> traces, RepresentationNode node, string rootName)
+    private static void Trace(List<RepresentationNode> partialTrace, ref List<List<RepresentationNode>> traces, RepresentationNode node, string rootName)
     {
         var trace = partialTrace;
         trace.Add(node);
 
         if (IsTraceEnd(node, rootName))
         {
-            if (UniqueAddition(trace, ref traces) == false)
-            {
-                return;
-            }
+            UniqueAddition(trace, ref traces);
+            return;
         }
-
+        
         foreach (var child in node.Children)
         {
             Trace(trace, ref traces, child, rootName);
         }
     }
     
-    private bool IsTraceEnd(RepresentationNode node, string rootName)
+    private static bool IsTraceEnd(RepresentationNode node, string rootName)
     {
         return node.Name == rootName || node.Children.Count <= 0;
     }
 
-    private bool UniqueAddition(List<RepresentationNode> trace, ref List<List<RepresentationNode>> traces)
+    private static void UniqueAddition(List<RepresentationNode> trace, ref List<List<RepresentationNode>> traces)
     {
         var existingTrace = traces.Find(t => t.Equals(trace));
 
-        if (existingTrace == null) return false;
+        if (existingTrace != null) return;
         traces.Add(trace);
-        return true;
     }
 
     #endregion
