@@ -16,7 +16,7 @@ public class Node
     private Node(string name, string line, (string,string) child) 
         : this(name, line, new List<(string, string)> {child}) {}
 
-    private Node(string name, string line, List<(string,string)> children)
+    private Node(string name, string line, List<(string, string)> children)
     {
         Name = name;
         Line = line;
@@ -28,8 +28,9 @@ public class Node
         Name = name;
         Line = line;
         Outcome = outcome;
+        ChildNames = ChildNames;
     }
-
+    
     public static List<Node> GetTree()
     {
         return new List<Node>
