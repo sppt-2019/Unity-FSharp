@@ -3,4 +3,4 @@ open UnityEngine
 open System
 
 type FRP_ThirdPersonController() =
-    inherit MonoBehaviour()
+    inherit FRPBehaviour()

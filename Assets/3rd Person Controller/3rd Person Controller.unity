@@ -334,14 +334,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1076097175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 754292546, guid: dbfa972955d157d4c92f9c7f01d6a402, type: 3}
+  m_Script: {fileID: 754292546, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpSpeed: 10
-  MoveSpeed: 10
-  RotationSpeed: 25
-  Camera: {fileID: 1481869313}
-  CameraRotationSpeed: 180
 --- !u!54 &1076097177
 Rigidbody:
   m_ObjectHideFlags: 0

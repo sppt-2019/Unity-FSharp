@@ -15,7 +15,7 @@ type StateMaterial() =
     let mutable Material:Material = null
 
 type FRP_StateMachine() =
-    inherit MonoBehaviour()
+    inherit FRPBehaviour()
 
     [<SerializeField>]
     let mutable StateMaterials:StateMaterial[] = null

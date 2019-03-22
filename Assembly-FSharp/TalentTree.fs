@@ -12,7 +12,7 @@ type Tree =
     | Leaf of TalentValue:Talent
 
 type FRP_TalentTree() = 
-    inherit MonoBehaviour()
+    inherit FRPBehaviour()
 
 
 

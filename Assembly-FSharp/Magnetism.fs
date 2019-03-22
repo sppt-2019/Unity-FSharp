@@ -3,7 +3,7 @@ open UnityEngine
 open System
 
 type FRP_MagnetismController() = 
-    inherit UnityEngine.MonoBehaviour()
+    inherit FRPBehaviour()
 
     member this.Start() = 
         let Balls = GameObject.FindGameObjectsWithTag("Magnetic")
