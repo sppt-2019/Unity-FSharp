@@ -39,6 +39,7 @@ public class NPC : MonoBehaviour
 
         Say(nodeRoot);
 
+        var giftNodes = Solution2(nodeRoot);
         
     }
 
@@ -53,36 +54,28 @@ public class NPC : MonoBehaviour
             return null;
         }
         var res = new RepresentationNode(node.Name, node.Line);
-        var eNode = Exists(res);
-        if (eNode != null) return eNode;
-        
-        foreach (var childName in node.ChildNames)
-        {
-            var childNode = nodes.Find(n => n.Name == childName);
-            if (childNode == null) continue;
-            var existNode = Exists(childName);
-            if (existNode != null)
-            {
-                res.Children.Add(existNode);
-            } else {
-                var child = Solution1(childNode, limit - 1);
-                existingNodes.Add(child);
-                res.Children.Add(child);
-            }
-        }
+        var existNodes = new List<RepresentationNode>();
+        TreeBuilder(res, node, existNodes, nodes, limit);
         return res;
     }
 
-    private RepresentationNode Exists (RepresentationNode node)
+    private static void TreeBuilder(RepresentationNode parentRep, Node parentNode, List<RepresentationNode> exist, List<Node> nodes, int limit)
     {
-        var option = existingNodes.Find(n => n.Name == node.Name);
-        return option != null ? option : null;
+        
+        foreach (var childName in parentNode.ChildNames)
+        {
+            var node = nodes.Find(n => n.Name == childName);
+            var child = Get(node, exist);
+            parentRep.Children.Add(child);
+            exist.Add(child);
+            TreeBuilder(child, node, exist, nodes, limit -1);
+        }
     }
-    
-    private RepresentationNode Exists (string name)
+
+    private static RepresentationNode Get(Node node, List<RepresentationNode> exist)
     {
-        var option = existingNodes.Find(n => n.Name == name);
-        return option;
+        var rep = exist.Find(n => n.Name == node.Name);
+        return rep ?? new RepresentationNode(node.Name, node.Line, node.Reaction);
     }
 
     private class RepresentationNode : Node
@@ -90,6 +83,11 @@ public class NPC : MonoBehaviour
         public List<RepresentationNode> Children { get; set; }
 
         public RepresentationNode(string name, string line) : base(name, line)
+        {
+            Children = new List<RepresentationNode>();
+        }
+        
+        public RepresentationNode(string name, string line, NPCReaction reaction) : base(name, line, reaction)
         {
             Children = new List<RepresentationNode>();
         }
@@ -110,7 +108,7 @@ public class NPC : MonoBehaviour
 
     #region Solution2
 
-    private List<RepresentationNode> Solution2(RepresentationNode node)
+    private static List<RepresentationNode> Solution2(RepresentationNode node)
     {
         var giftNodes = new List<RepresentationNode>();
         Traverse(node, giftNodes);
@@ -119,12 +117,12 @@ public class NPC : MonoBehaviour
 
     private static void Traverse(RepresentationNode node, List<RepresentationNode> giftNodes)
     {
-        if(node.Reaction == Node.NPCReaction.Gift)
+        if(node.Reaction == Node.NPCReaction.Gift && !giftNodes.Contains(node))
             giftNodes.Add(node);
         
         node.Children.ForEach(chld =>
         {
-            if (chld.Reaction == Node.NPCReaction.Gift)
+            if (chld.Reaction == Node.NPCReaction.Gift && !giftNodes.Contains(chld))
                 giftNodes.Add(chld);
         });
 
