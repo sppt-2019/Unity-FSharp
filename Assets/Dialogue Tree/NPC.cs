@@ -39,9 +39,7 @@ public class NPC : MonoBehaviour
 
         Say(nodeRoot);
 
-        var traces = Solution2(nodeRoot);
-        Debug.Log(traces);
-        Debug.Log(traces.Count);
+        
     }
 
 
@@ -112,56 +110,28 @@ public class NPC : MonoBehaviour
 
     #region Solution2
 
-    private List<List<RepresentationNode>> Solution2(RepresentationNode root)
+    private List<RepresentationNode> Solution2(RepresentationNode node)
     {
-        var traces = new List<List<RepresentationNode>>();
-        Trace(new List<RepresentationNode>(), ref traces, root, root.Name,  true);
-        return traces;
+        var giftNodes = new List<RepresentationNode>();
+        Traverse(node, giftNodes);
+        return giftNodes;
     }
 
-    private static void Trace(List<RepresentationNode> partialTrace, ref List<List<RepresentationNode>> traces, RepresentationNode node, string rootName, bool first)
+    private static void Traverse(RepresentationNode node, List<RepresentationNode> giftNodes)
     {
-        var trace = partialTrace;
-        trace.Add(node);
-
-        if (IsTraceEnd(node, rootName) && !first)
-        {
-            UniqueAddition(trace, ref traces);
-            return;
-        }
+        if(node.Reaction == Node.NPCReaction.Gift)
+            giftNodes.Add(node);
         
+        node.Children.ForEach(chld =>
+        {
+            if (chld.Reaction == Node.NPCReaction.Gift)
+                giftNodes.Add(chld);
+        });
+
         foreach (var child in node.Children)
         {
-            Trace(trace, ref traces, child, rootName, false);
+            Traverse(child, giftNodes);
         }
-    }
-    
-    private static bool IsTraceEnd(RepresentationNode node, string rootName)
-    {
-        return node.Name == rootName || node.Children.Count <= 0;
-    }
-
-    private static void UniqueAddition(List<RepresentationNode> trace, ref List<List<RepresentationNode>> traces)
-    {
-        var existingTrace = traces.Find(t => Compare(t, trace));
-
-        if (existingTrace != null)
-            return;
-        traces.Add(trace);
-    }
-
-    private static bool Compare(List<RepresentationNode> lst, List<RepresentationNode> lst2)
-    {
-        if (lst.Count != lst2.Count)
-            return false;
-
-        for (int i = lst.Count - 1; i >= 0; i--)
-        {
-            if (lst[i].Name != lst2[i].Name)
-                return false;
-        }
-
-        return true;
     }
 
     #endregion
