@@ -38,14 +38,14 @@ public class Node
     {
         Name = name;
         Line = line;
-        ChildNames = ChildNames;
+        ChildNames = children;
         Reaction = NPCReaction.NoReaction;
     }
     public Node(string name, string line, List<string> children, NPCReaction reaction)
     {
         Name = name;
         Line = line;
-        ChildNames = ChildNames;
+        ChildNames = children;
         Reaction = reaction;
     }
 
@@ -67,17 +67,16 @@ public class Node
                 "Min hund er blevet væk og jeg skulle alligevel ud og lede efter den. Har du brug for hjælp?",
                 new List<string> {"yes", "no"}),
             new Node("yes", "Fantastisk, mit sværd er dit!", "companion"),
-            new Node("no", "Ærgeligt, sig til hvis du ombestemmer dig.", "work"),
+            new Node("no", "Ærgeligt, sig til hvis du ombestemmer dig.", NPCReaction.NoReaction),
             new Node("found", "MIN LILLE HUND! Den har været væk i flere dage. Tusind tak!", "gift"),
             new Node("move", "Her i byen taler vi pænt til hinanden!",
                 new List<string> {"die", "sorry"}),
             new Node("die", "VI BLIVER ANGREBET!", "hostile", NPCReaction.Hostile),
-            new Node("sorry", "Det er i orden. Det kan ske for alle", "work"),
-            new Node("goodbye", "Held og lykke på dine rejser", "no-reaction"),
+            new Node("sorry", "Det er i orden. Det kan ske for alle"),
+            new Node("goodbye", "Held og lykke på dine rejser", NPCReaction.NoReaction),
             new Node("companion", "Karakteren bliver ens følgesvend", NPCReaction.Companion),
             new Node("hostile", "Karakteren bliver fjendtlig", NPCReaction.Hostile),
             new Node("gift", "Karakteren giver spilleren en gave", NPCReaction.Gift),
-            new Node("no-reaction", "Ingen reaktion")
         };
     }
     
