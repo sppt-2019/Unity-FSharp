@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
@@ -24,12 +25,7 @@ public class NPC : MonoBehaviour
     {
         _nodes = Node.GetTree();
         _currentNode = _nodes[0];
-        var nodeRoot = Solution1(_nodes[0], 10);
-
-        Say(nodeRoot);
-
-        var traces = Solution2(nodeRoot);
-        Debug.Log(traces);
-        Debug.Log(traces.Count);
+        
+        Say(_nodes[0]);
     }
 }
