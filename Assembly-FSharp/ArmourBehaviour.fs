@@ -5,7 +5,7 @@ open System
 type FRP_ArmourBehaviour() =
     inherit FRPBehaviour()
 
-    let sum (triplet1:'a*'a*'a) (triplet2:'a*'a*'a) =
+    let sum (triplet1:int*int*int) (triplet2:int*int*int) =
         let (a1, b1, c1) = triplet1.Deconstruct()
         let (a2, b2, c2) = triplet2.Deconstruct()
         (a1+a2,b1+b2,c1+c2)

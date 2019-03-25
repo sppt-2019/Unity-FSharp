@@ -6,9 +6,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="FRPBehaviour.fs" />
+    <Compile Include="DialougeTree.fs" />
     <Compile Include="ItemStore.fs" />
     <Compile Include="ArmourBehaviour.fs" />
-    <Compile Include="NPC.fs" />
     <Compile Include="Shot.fs" />
     <Compile Include="FPSController.fs" />
     <Compile Include="IStateMachineEntity.fs" />
@@ -21,6 +21,9 @@
     <Compile Include="ThirdPersonController.fs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\obj\Debug\Assembly-CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -29,9 +32,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>C:\Users\tobia\Documents\Unity-F#\Assembly-FSharp\bin\Debug\netstandard2.0\Assembly-CSharp.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/tobia/Documents/Unity-F#/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
