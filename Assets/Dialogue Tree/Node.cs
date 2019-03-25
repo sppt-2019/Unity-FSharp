@@ -4,57 +4,30 @@ using UnityEngine;
 
 public class Node
 {
-    public Node(string name, string line)
+    public enum DialogOutcome
     {
-        Name = name;
-        Line = line;
-        ChildNames = new List<string>();
-        Reaction = NPCReaction.NoReaction;
-    }
-    public Node(string name, string line, NPCReaction reaction)
-    {
-        Name = name;
-        Line = line;
-        ChildNames = new List<string>();
-        Reaction = reaction;
-    }
-    public Node(string name, string line, string child)
-    {
-        Name = name;
-        Line = line;
-        ChildNames = new List<string>();
-        ChildNames.Add(child);
-        Reaction = NPCReaction.NoReaction;
-    }
-    public Node(string name, string line, string child, NPCReaction reaction)
-    {
-        Name = name;
-        Line = line;
-        ChildNames = new List<string>();
-        ChildNames.Add(child);
-        Reaction = reaction;
-    }
-    public Node(string name, string line, List<string> children)
-    {
-        Name = name;
-        Line = line;
-        ChildNames = children;
-        Reaction = NPCReaction.NoReaction;
-    }
-    public Node(string name, string line, List<string> children, NPCReaction reaction)
-    {
-        Name = name;
-        Line = line;
-        ChildNames = children;
-        Reaction = reaction;
-    }
-
-    public enum NPCReaction
-    {
-        NoReaction = 0,
+        Companion,
         Hostile,
         Gift,
-        Companion
+        None
+    }
+    
+    private Node(string name, string line, (string,string) child) 
+        : this(name, line, new List<(string, string)> {child}) {}
+
+    private Node(string name, string line, List<(string, string)> children)
+    {
+        Name = name;
+        Line = line;
+        ChildNames = children;
+    }
+
+    private Node(string name, string line, DialogOutcome outcome)
+    {
+        Name = name;
+        Line = line;
+        Outcome = outcome;
+        ChildNames = ChildNames;
     }
     
     public static List<Node> GetTree()
@@ -62,27 +35,26 @@ public class Node
         return new List<Node>
         {
             new Node("welcome", "Velkommen til vores lille by, hvad kan jeg hjælpe med?",
-                new List<string> {"work", "found", "move"}),
+                new List<(string, string)>{("work", "Jeg leder efter arbejde..."), 
+                    ("found", "Jeg fandt denne hund ude i skoven, kender du ejeren?"), ("move", "Flyt dig!")}),
             new Node("work",
                 "Min hund er blevet væk og jeg skulle alligevel ud og lede efter den. Har du brug for hjælp?",
-                new List<string> {"yes", "no"}),
-            new Node("yes", "Fantastisk, mit sværd er dit!", "companion"),
-            new Node("no", "Ærgeligt, sig til hvis du ombestemmer dig.", NPCReaction.NoReaction),
-            new Node("found", "MIN LILLE HUND! Den har været væk i flere dage. Tusind tak!", "gift"),
+                new List<(string,string)> {("yes", "Ja"), ("no", "Nej")}),
+            new Node("yes", "Fantastisk, mit sværd er dit!", DialogOutcome.Companion),
+            new Node("no", "Ærgeligt, sig til hvis du ombestemmer dig.", DialogOutcome.None),
+            new Node("found", "MIN LILLE HUND! Den har været væk i flere dage. Tusind tak!", 
+                DialogOutcome.Gift),
             new Node("move", "Her i byen taler vi pænt til hinanden!",
-                new List<string> {"die", "sorry"}),
-            new Node("die", "VI BLIVER ANGREBET!", "hostile", NPCReaction.Hostile),
-            new Node("sorry", "Det er i orden. Det kan ske for alle"),
-            new Node("goodbye", "Held og lykke på dine rejser", NPCReaction.NoReaction),
-            new Node("companion", "Karakteren bliver ens følgesvend", NPCReaction.Companion),
-            new Node("hostile", "Karakteren bliver fjendtlig", NPCReaction.Hostile),
-            new Node("gift", "Karakteren giver spilleren en gave", NPCReaction.Gift),
+                new List<(string,string)> {("die", "Så skal byen DØØØØØØØ!"), 
+                    ("sorry", "Undskyld. Det har været en dårlig dag")}),
+            new Node("die", "VI BLIVER ANGREBET!", DialogOutcome.Hostile),
+            new Node("sorry", "Det er i orden. Det kan ske for alle", DialogOutcome.None),
+            new Node("goodbye", "Held og lykke på dine rejser", DialogOutcome.None)
         };
     }
     
     public string Name { get; }
     public string Line { get; }
-    public List<string> ChildNames { get; set; }
-    
-    public NPCReaction Reaction { get; set; }
+    public List<(string nodeToGoTo, string reply)> ChildNames { get; set; }
+    public DialogOutcome Outcome { get; set; } = DialogOutcome.None;
 }
