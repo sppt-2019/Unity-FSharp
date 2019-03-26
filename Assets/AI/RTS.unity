@@ -1573,6 +1573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1932910223}
   - component: {fileID: 1932910222}
+  - component: {fileID: 1932910224}
   m_Layer: 0
   m_Name: FRP_StateMachine
   m_TagString: StateMachine
@@ -1615,6 +1616,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1932910224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932910221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1078027154, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2049679538
 GameObject:
   m_ObjectHideFlags: 0

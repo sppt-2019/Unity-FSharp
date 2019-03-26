@@ -29,7 +29,7 @@ type FRP_MagnetismController() =
     member this.Start() = 
         let balls = GameObject.FindGameObjectsWithTag("Magnetic")
 
-        this.ReactTo (FRPEvent.Update,
+        this.ReactTo FRPEvent.Update
             (fun () -> 
                 let center:Vector3 = getCenter(balls)
                 let updatedBalls = 
@@ -38,4 +38,3 @@ type FRP_MagnetismController() =
                     |> Array.map step
                 Debug.Log("Them balls were updated")
             )
-        )

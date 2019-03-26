@@ -25,6 +25,11 @@ type FRP_Resources() =
             q * cr)
         |> List.sum
 
+    let sumInPowerN (ints:float32 list) (n:float32) =
+        ints
+        |> List.map (fun i -> Mathf.Pow(i, n))
+        |> List.sum
+    
     let combine totalDildSils =
         let rVildIld = totalDildSils / convRatio.[0]
         let rMildAbild = (totalDildSils - (rVildIld * convRatio.[0])) / convRatio.[1]

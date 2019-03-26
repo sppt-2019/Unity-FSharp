@@ -64,10 +64,10 @@ public class FSharpImporter
 
 		try
 		{
-			Menu.SetChecked(MenuItemIsDebug, ShowDebugInfo);
-			Menu.SetChecked(MenuItemReleaseBuild, IsReleaseMode);
-			Menu.SetChecked(MenuItemReferenceCSharpDll, ReferenceCSharpDll);
-			Menu.SetChecked(MenuItemIncludeAdditionalReferences, IncludeAdditionalReferences);
+//			Menu.SetChecked(MenuItemIsDebug, ShowDebugInfo);
+//			Menu.SetChecked(MenuItemReleaseBuild, IsReleaseMode);
+//			Menu.SetChecked(MenuItemReferenceCSharpDll, ReferenceCSharpDll);
+//			Menu.SetChecked(MenuItemIncludeAdditionalReferences, IncludeAdditionalReferences);
 		}
 		catch (Exception) { }
 	}
@@ -181,12 +181,10 @@ public class FSharpImporter
 			if (ReferenceCSharpDll)
 			{
 				var csDlls = Directory.GetFiles(dir, "Assembly-CSharp.dll", SearchOption.AllDirectories);
-				if(ShowDebugInfo) Debug.Log("Found C# assemblies: " + string.Join(", ", csDlls));
 				var mode = releaseBuild ? "Release" : "Debug";
-				var properDll = csDlls.FirstOrDefault(dll => dll.Contains(mode)) ?? csDlls.FirstOrDefault(r => !r.Contains("Assembly-FSharp") || !r.Contains("Temp"));
+				var properDll = csDlls.FirstOrDefault(dll => dll.Contains(mode)) ?? csDlls.FirstOrDefault();
 				if (properDll != null)
 				{
-					if (ShowDebugInfo) Debug.Log("Successfully added C# reference: " + properDll);
 					csharpDllReference = new Reference("Assembly-CSharp", properDll);
 				}
 				else
@@ -237,6 +235,7 @@ public class FSharpImporter
 			{
 				var csharpReferenceGroup = new XElement("ItemGroup");
 				csharpReferenceGroup.Add(references.CSharpDll.ToXElement());
+				fsProjectDocument.Root.Add(csharpReferenceGroup);
 			}
 			else if (ShowDebugInfo)
 			{
@@ -264,6 +263,7 @@ public class FSharpImporter
 		var projectName = Path.GetFileNameWithoutExtension(project);
 		var projectDir = Path.GetDirectoryName(project);
 		var configuration = releaseMode ? "Release" : "Debug";
+		Print("Compiling in " + configuration + " mode");
 		var projectBuildDir = Path.Combine(projectDir, "bin", configuration);
 		
 		Directory.CreateDirectory(projectBuildDir);

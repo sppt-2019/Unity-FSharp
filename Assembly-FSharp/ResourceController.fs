@@ -19,7 +19,7 @@ type FRP_ResourceController() =
     let mutable MildAbildResult:UnityEngine.UI.Text = null
     [<SerializeField>]
     let mutable VildildResult:UnityEngine.UI.Text = null
-
+    
     member this.UpdateResources dildSild mildAbild vildild =
         DildSild.text <- dildSild.ToString()
         MildAbild.text <- mildAbild.ToString()

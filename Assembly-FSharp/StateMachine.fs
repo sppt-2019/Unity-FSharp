@@ -116,4 +116,4 @@ type FRP_StateMachine() =
 
     member this.Start() =
         Debug.Log("Ding dong motherfucker")
-        this.ReactTo(FRPEvent.Update, this.UpdateEntities)
+        this.ReactTo FRPEvent.Update this.UpdateEntities

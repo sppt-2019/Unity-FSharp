@@ -2,6 +2,11 @@
 open UnityEngine
 open System
 
+type Weather =
+| Snowing of cmOfSnow:int * temp:float32
+| Sunny of temp:float32
+| Storm of windSpeed:int * temp:float32
+
 type FRP_FPSController() =
     inherit FRPBehaviour()
 
@@ -18,27 +23,23 @@ type FRP_FPSController() =
     member this.Start() =
         let rigidbody = this.GetComponent<Rigidbody>()
 
-        this.ReactTo (
-            FRPEvent.Keyboard, 
-            (fun () -> Input.GetKeyDown KeyCode.Space),
-            (fun () -> 
-                rigidbody.velocity <- rigidbody.velocity + (Vector3.up * JumpSpeed)
-        ))
+        this.ConditionalReactTo FRPEvent.Keyboard
+            (fun () -> Input.GetKeyDown KeyCode.Space)
+            (fun () -> rigidbody.velocity <- rigidbody.velocity + (Vector3.up * JumpSpeed))
+        
 
-        this.ReactTo<float32*float32>(FRPEvent.MoveAxis,
-            (fun a -> 
+        this.ReactTo<float32*float32> FRPEvent.MoveAxis
+            (fun a ->
                 let (hori, vert) = a.Deconstruct()
                 let rec getStep axis = Time.deltaTime * MoveSpeed * axis
                 let moveVec = (this.transform.forward * getStep vert) + (this.transform.right * getStep hori)
                 rigidbody.MovePosition(rigidbody.transform.position + moveVec)
             )
-        )
 
-        this.ReactTo<float32*float32>(FRPEvent.MouseMove,
+        this.ReactTo<float32*float32> FRPEvent.MouseMove
             (fun mouseAxes ->
                 let (hori, vert) = mouseAxes.Deconstruct()
                 let rec getRotationStep axis = Time.deltaTime * RotationSpeed * axis
                 Camera.transform.Rotate(-getRotationStep vert, 0.0f, 0.0f)
                 this.transform.Rotate(0.0f, getRotationStep hori, 0.0f)
             )
-        )

@@ -5,6 +5,7 @@
     <RootNamespace>Assembly_FSharp</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FRPEngine.fs" />
     <Compile Include="FRPBehaviour.fs" />
     <Compile Include="DialougeTree.fs" />
     <Compile Include="ItemStore.fs" />
@@ -21,14 +22,16 @@
     <Compile Include="ThirdPersonController.fs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\obj\Debug\Assembly-CSharp.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Users\tobia\Documents\Unity-F#\Assembly-FSharp\bin\Debug\Assembly-CSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
