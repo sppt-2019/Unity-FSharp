@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 
 enum State
@@ -21,17 +19,34 @@ class StateMachine : MonoBehaviour
     public StateMaterial[] StateMaterials;
     public GameObject ShotPrefab;
 
+    /*JoinState is called by the shooters to indicate that they want to be part of the state machine*/
     public void JoinState(Shooter shooter, State state)
     {
-
+        shooter.GetComponent<Renderer>().material = StateMaterials.First(m => m.State == state).Material;
     }
 
-    public void ExecuteShoot(Shooter s)
+    /*TransferState is called by the shooters to indicate that they want to move from one state to another*/
+    public void TransferState(Shooter shooter, State state)
     {
+        shooter.GetComponent<Renderer>().material = StateMaterials.First(m => m.State == state).Material;
+    }
+
+    #region State Logic
+    public void Attack(Shooter s)
+    {
+        void ShootAt(Transform target)
+        {
+            var lookAtTransform = new Vector3(target.position.x, s.transform.position.y, target.position.z);
+
+            var shot = Instantiate(ShotPrefab);
+            shot.transform.position = s.transform.position;
+            shot.transform.LookAt(lookAtTransform, Vector3.up);
+        }
+        
         //Check if the shooter has any shots left, move a little if not
         if (s.ShotsBeforeStateChange == 0)
         {
-            JoinState(s, State.Moving);
+            TransferState(s, State.Moving);
             return;
         }
 
@@ -39,19 +54,10 @@ class StateMachine : MonoBehaviour
         s.Cooldowner -= Time.deltaTime;
         if (s.Cooldowner <= 0f)
         {
-            ShootAt(s, s.AttackTarget);
+            ShootAt(s.AttackTarget);
             s.ShotsBeforeStateChange--;
             s.Cooldowner = s.ShotCooldown;
         }
-    }
-
-    public void ShootAt(Shooter r, Transform target)
-    {
-        var lookAtTransform = new Vector3(target.position.x, r.transform.position.y, target.position.z);
-
-        var shot = Instantiate(ShotPrefab);
-        shot.transform.position = r.transform.position;
-        shot.transform.LookAt(lookAtTransform, Vector3.up);
     }
 
     public void Flee(Shooter s)
@@ -59,7 +65,7 @@ class StateMachine : MonoBehaviour
         s.Cooldowner -= Time.deltaTime;
         if(s.Cooldowner <= 0f)
         {
-            JoinState(s, State.Attacking);
+            TransferState(s, State.Attacking);
             return;
         }
 
@@ -68,16 +74,17 @@ class StateMachine : MonoBehaviour
         s.transform.position = s.transform.position + s.transform.forward * stepSize;
     }
 
-    public void MoveTo(Shooter s)
+    public void Move(Shooter s)
     {
         if(Vector3.Distance(s.transform.position, s.MoveTarget) < 0.1f)
         {
             Debug.Log(s.name + " has arrived, attacking");
-            JoinState(s, State.Attacking);
+            TransferState(s, State.Attacking);
             return;
         }
 
         s.transform.LookAt(s.MoveTarget);
         s.transform.position = s.transform.position + (s.transform.forward * s.Speed * Time.deltaTime);
     }
+    #endregion
 }

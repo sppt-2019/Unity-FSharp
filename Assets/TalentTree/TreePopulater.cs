@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class TreePopulater : MonoBehaviour
 {
@@ -9,7 +6,7 @@ public class TreePopulater : MonoBehaviour
     void Start()
     {
         var children = this.GetComponentsInChildren<TalentUI>();
-        var bt = Talent.BaseTalent;
+        var bt = Talent.TalentTreeRoot;
         Debug.Log(bt);
         
         int noTalents = 0;

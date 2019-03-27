@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Talent", menuName = "SPPT/Talent", order = 1)]
 public class Talent : ScriptableObject
@@ -15,5 +13,5 @@ public class Talent : ScriptableObject
 
     public Talent[] SubTalents;
 
-    public static Talent BaseTalent => UnityEngine.Resources.Load<Talent>("TalentAssets/Base");
+    public static Talent TalentTreeRoot => UnityEngine.Resources.Load<Talent>("TalentAssets/Base");
 }
