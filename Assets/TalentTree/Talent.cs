@@ -14,4 +14,6 @@ public class Talent : ScriptableObject
     public Sprite Sprite;
 
     public Talent[] SubTalents;
+
+    public static Talent BaseTalent => UnityEngine.Resources.Load<Talent>("TalentAssets/Base");
 }

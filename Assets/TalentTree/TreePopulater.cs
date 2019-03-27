@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class TreePopulater : MonoBehaviour
 {
-    public Talent BaseTalent;
-
     // Start is called before the first frame update
     void Start()
     {
         var children = this.GetComponentsInChildren<TalentUI>();
-
+        var bt = Talent.BaseTalent;
+        Debug.Log(bt);
+        
         int noTalents = 0;
-        FillTalents(BaseTalent, children, ref noTalents);
+        FillTalents(bt, children, ref noTalents);
         Debug.Log("There were " + noTalents + " talents");
     }
 

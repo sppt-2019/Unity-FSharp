@@ -30,8 +30,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>C:\Users\tobia\Documents\Unity-F#\Assembly-FSharp\bin\Debug\netstandard2.0\Assembly-CSharp.dll</HintPath>
+      <HintPath>C:\Users\tobia\Documents\Unity-F#\Assembly-FSharp\bin\Debug\Assembly-CSharp.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/tobia/Documents/Unity-F#/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
