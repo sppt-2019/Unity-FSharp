@@ -22,7 +22,7 @@ type FRP_MagnetismController() =
         ball
 
     let step (ball:GameObject):GameObject =
-        let rec getStep = Time.deltaTime * MoveSpeed
+        let getStep = Time.deltaTime * MoveSpeed
         ball.GetComponent<Rigidbody>().MovePosition(ball.transform.position + ball.transform.forward * getStep)
         ball
 

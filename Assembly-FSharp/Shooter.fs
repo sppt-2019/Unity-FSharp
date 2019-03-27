@@ -15,7 +15,7 @@ type FRP_Shooter() =
     let mutable attackTarget:Transform = null
     let mutable moveTarget:Vector3 = Vector3.zero
     let mutable cooldowner = 0.0f
-
+    
     interface IStateMachineEntity with
         member this.name = base.name
         [<SerializeField>]
@@ -40,7 +40,7 @@ type FRP_Shooter() =
             and set(v) = cooldowner <- v
         member this.transform
             with get() = this.transform
-
+    
     member this.Start() =
         let stateMachine = GameObject.FindGameObjectWithTag("StateMachine").GetComponent<FRP_StateMachine>();
         stateMachine.JoinState this State.Moving
