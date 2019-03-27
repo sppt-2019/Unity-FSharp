@@ -20,11 +20,34 @@ class StateMachine : MonoBehaviour
 {
     public StateMaterial[] StateMaterials;
     public GameObject ShotPrefab;
+    public Dictionary<Shooter, State> Shooters = new Dictionary<Shooter, State>();
+
+
+    private void Update()
+    {
+        foreach (var shooter in Shooters)
+        {
+            switch (shooter.Value)
+            {
+                case State.Moving:
+                    MoveTo(shooter.Key);
+                    break;
+                case State.Fleeing:
+                    Flee(shooter.Key);
+                    break;
+                case State.Attacking:
+                    ExecuteShoot(shooter.Key);
+                    break;
+            }
+        }
+    }
 
     public void JoinState(Shooter shooter, State state)
     {
-
+        Shooters.Add(shooter, state);
     }
+    
+    
 
     public void ExecuteShoot(Shooter s)
     {

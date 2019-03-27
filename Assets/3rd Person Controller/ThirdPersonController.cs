@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class ThirdPersonController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float speed;
+    public float jumpower = 500;
+    public Camera cam;
+    
+    
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
         
+        Vector3 dir = new Vector3(x,0,y);
+        
+        transform.Translate(dir);
+
+
+        float mx = Input.GetAxis("Mouse X");
+        float my = Input.GetAxis("Mouse Y");
+        
+        Vector3 mdir = new Vector3(my, mx, 0f);
+        
+        cam.transform.RotateAround(transform.position, Vector3.up, mx);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GetComponent<Rigidbody>().AddForce(Vector3.up * jumpower);
+        }
+
     }
 }
