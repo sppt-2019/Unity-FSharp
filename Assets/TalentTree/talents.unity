@@ -4379,7 +4379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311c16d2c4a8b5542aa84876abe51407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseTalent: {fileID: 11400000, guid: ff02250266b7fd74f90aa7d101a8aa63, type: 2}
 --- !u!1 &1084990166
 GameObject:
   m_ObjectHideFlags: 0
@@ -8783,7 +8782,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1874200668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -671025499, guid: dbfa972955d157d4c92f9c7f01d6a402, type: 3}
+  m_Script: {fileID: -671025499, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1874200670
@@ -8809,6 +8808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1893476307}
+  - component: {fileID: 1893476308}
   m_Layer: 0
   m_Name: TalentTree
   m_TagString: Untagged
@@ -8830,6 +8830,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1893476308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893476306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5915b768bd9674fab8d7e8fb2069b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1899351602
 GameObject:
   m_ObjectHideFlags: 0

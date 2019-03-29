@@ -47,7 +47,7 @@ public class NPC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _nodes = Node.GetTree();
+        _nodes = Node.GetExampleDialog();
         _currentNode = _nodes[0];
         
         Say(_nodes[0]);

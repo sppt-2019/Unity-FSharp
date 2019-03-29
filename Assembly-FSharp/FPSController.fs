@@ -5,6 +5,6 @@ open System
 type FRP_FPSController() =
     inherit FRPBehaviour()
 
-    member this.start() =
+    member this.Start() =
         Debug.Log("Hello from F#")
 

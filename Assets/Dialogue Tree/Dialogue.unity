@@ -934,7 +934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1444811824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,14 +944,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1444811823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1661377635, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
+  m_Script: {fileID: 336280302, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OutText: {fileID: 364256814}
-  Buttons:
-  - {fileID: 1740510952}
-  - {fileID: 745454667}
-  - {fileID: 79830850}
 --- !u!4 &1444811825
 Transform:
   m_ObjectHideFlags: 0

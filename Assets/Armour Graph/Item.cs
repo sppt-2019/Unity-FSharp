@@ -10,41 +10,13 @@ public enum ItemGroup
 
 [CreateAssetMenu(fileName = "Item", menuName = "SPPT/Item", order = 1)]
 public class Item : ScriptableObject
-{
-    private static readonly int MAX = 100;
-    private static readonly int MIN = 0;
-
-    public Item(string name)
-    {
-        Name = name;
-        Intellect = Random.Range(MIN, MAX);
-        IntellectMod = Random.Range(0.5f, 2.0f);
-        Strength = Random.Range(MIN, MAX);
-        StrengthMod = Random.Range(0.5f, 2.0f);
-        Agility = Random.Range(MIN, MAX);
-        AgilityMod = Random.Range(0.5f, 2.0f);
-        
-    }
-    
-    public Item(string name, int intellect, float intMod, int strength, float strMod, int agility, float agiMod)
-    {
-        Name = name;
-        Intellect = intellect;
-        IntellectMod = intMod;
-        Strength = strength;
-        StrengthMod = strMod;
-        Agility = agility;
-        AgilityMod = agiMod;
-
-    }
-
-    
-    public static IEnumerable<Item> Exercise1()
+{   
+    public static IEnumerable<Item> AllItems()
     {
         return UnityEngine.Resources.LoadAll<Item>("Items");
     }
     
-    public static List<Group> Exercise2()
+    public static List<Group> GroupedItems()
     {
         var items = UnityEngine.Resources.LoadAll<Item>("Items");
         return new List<Group>{
@@ -67,6 +39,6 @@ public class Item : ScriptableObject
 
     public override string ToString()
     {
-        return $"{Name}: [{Intellect}, {Strength}, {Agility}]";
+        return $"{Name}: [int: {Intellect}, str: {Strength}, agi: {Agility}]";
     }
 }

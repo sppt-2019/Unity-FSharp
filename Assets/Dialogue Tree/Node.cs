@@ -29,7 +29,7 @@ public class Node
         ChildNames = ChildNames;
     }
     
-    public static List<Node> GetTree()
+    public static List<Node> GetExampleDialog()
     {
         return new List<Node>
         {

@@ -2,15 +2,15 @@
 using System.Linq;
 using UnityEngine;
 
-public class Group : ScriptableObject
+public class Group
 {
     public Group(ItemGroup itemGroup, IEnumerable<Item> itemsInGroup)
     {
-        IemmGroup = itemGroup;
+        ItmGroup = itemGroup;
         Items = itemsInGroup.ToList();
     }
 
-    public ItemGroup IemmGroup { get; set; }
+    public ItemGroup ItmGroup { get; set; }
 
     public List<Item> Items { get; set; }
 
@@ -18,6 +18,6 @@ public class Group : ScriptableObject
     {
         var itms = "\n" + string.Join("\n", Items);
 
-        return $"{IemmGroup.ToString()}" + itms + "]";
+        return $"{ItmGroup.ToString()}" + itms + "]";
     }
 }
