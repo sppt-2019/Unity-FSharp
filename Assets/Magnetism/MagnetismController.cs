@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -31,7 +32,27 @@ public class MagnetismController : MonoBehaviour
         foreach (var ball in _myBalls)
         {
             ball.transform.LookAt(center);
-            ball.transform.GetComponent<Rigidbody>().MovePosition(ball.transform.position + (ball.transform.forward * moveSpeed * Time.deltaTime));
+            ball.GetComponent<Rigidbody>().MovePosition(ball.transform.position + (ball.transform.forward * moveSpeed * Time.deltaTime));
+        }
+    }
+
+    void UpdateAsync()
+    {
+        var center = CalcCenter(_myBalls);
+
+        foreach (var ball in _myBalls)
+        {
+            ball.transform.LookAt(center);
+        }
+        
+        var positionUpdates = _myBalls
+            .AsParallel()
+            .Select(b => (b.GetComponent<Rigidbody>(), b.transform.position, b.transform.forward))
+            .Select(t => (t.Item1, t.position + (t.forward * moveSpeed * Time.deltaTime)));
+
+        foreach (var (rm, newPos) in positionUpdates)
+        {
+            rm.MovePosition(newPos);
         }
     }
 }
