@@ -1174,9 +1174,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1351931617}
   - component: {fileID: 1351931616}
+  - component: {fileID: 1351931618}
+  - component: {fileID: 1351931619}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Plastic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1215,6 +1217,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1351931618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351931615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cd728705d54ec49880dfbeb738ea20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateMaterials:
+  - State: 0
+    Material: {fileID: 2100000, guid: ba79acfd74730a348ae06b15865c1b7f, type: 2}
+  - State: 1
+    Material: {fileID: 2100000, guid: 7f87c2fd4ae7eeb469719cc939e649dd, type: 2}
+  - State: 2
+    Material: {fileID: 2100000, guid: 742c09886101ef240823d021a1769e24, type: 2}
+--- !u!114 &1351931619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351931615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1489412744, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMaterials:
+  - State: 0
+    Material: {fileID: 2100000, guid: ba79acfd74730a348ae06b15865c1b7f, type: 2}
+  - State: 1
+    Material: {fileID: 2100000, guid: 7f87c2fd4ae7eeb469719cc939e649dd, type: 2}
+  - State: 2
+    Material: {fileID: 2100000, guid: 742c09886101ef240823d021a1769e24, type: 2}
 --- !u!1 &1454461147
 GameObject:
   m_ObjectHideFlags: 0

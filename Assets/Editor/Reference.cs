@@ -1,23 +1,26 @@
 using System.Xml.Linq;
 
-class Reference
+namespace FSharpIntegration.Editor
 {
-    public Reference(string include, string hintPath)
+    class UnityReference
     {
-        Include = include;
-        HintPath = hintPath;
-    }
+        public UnityReference(string include, string hintPath)
+        {
+            Include = include;
+            HintPath = hintPath;
+        }
 
-    public string Include { get; set; }
-    public string HintPath { get; set; }
+        public readonly string Include;
+        public readonly string HintPath;
 
-    public override int GetHashCode()
-    {
-        return Include.GetHashCode();
-    }
+        public override int GetHashCode()
+        {
+            return Include.GetHashCode();
+        }
 
-    public XElement ToXElement()
-    {
-        return new XElement("Reference", new XAttribute("Include", Include), new XElement("HintPath", HintPath));
+        public XElement ToXElement()
+        {
+            return new XElement("Reference", new XAttribute("Include", Include), new XElement("HintPath", HintPath));
+        }
     }
 }

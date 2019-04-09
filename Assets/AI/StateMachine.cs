@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
-enum State
+public enum State
 {
     Fleeing, Moving, Attacking
 }
 
 [Serializable]
-struct StateMaterial
+public struct StateMaterial
 {
     public State State;
     public Material Material;

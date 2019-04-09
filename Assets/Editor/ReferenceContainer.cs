@@ -1,7 +1,10 @@
-class ReferenceContainer
+namespace FSharpIntegration.Editor
 {
-    public Reference UnityEngine { get; set; }
-    public Reference UnityEditor { get; set; }
-    public Reference CSharpDll { get; set; }
-    public System.Collections.Generic.List<Reference> Additional { get; set; }
+    class UnityReferenceContainer
+    {
+        public UnityReference UnityEngine { get; set; }
+        public UnityReference UnityEditor { get; set; }
+        public UnityReference CSharpDll { get; set; }
+        public System.Collections.Generic.List<UnityReference> Additional { get; set; }
+    }
 }
