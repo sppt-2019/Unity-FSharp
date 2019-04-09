@@ -28,7 +28,7 @@ type FRP_MagnetismController() =
 
     member this.Start() = 
         let balls = GameObject.FindGameObjectsWithTag("Magnetic")
-
+        
         this.ReactTo (FRPEvent.Update,
             (fun () -> 
                 let center:Vector3 = getCenter(balls)
