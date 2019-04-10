@@ -30,7 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>C:\Users\tobia\Documents\Unity-F#\Assembly-FSharp\bin\Debug\Assembly-CSharp.dll</HintPath>
+      <HintPath>C:\Users\tobia\Documents\Unity-F#\Assembly-FSharp\bin\Release\Assembly-CSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
