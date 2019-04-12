@@ -40,14 +40,14 @@ public class Node
                 "Min hund er blevet væk og jeg skulle alligevel ud og lede efter den. Har du brug for hjælp?",
                 new List<(string,string)> {("yes", "Ja"), ("no", "Nej")}),
             new Node("yes", "Fantastisk, mit sværd er dit!", DialogOutcome.Companion),
-            new Node("no", "Ærgeligt, sig til hvis du ombestemmer dig.", ("welcome", "Ok")),
+            new Node("no", "Ærgeligt, sig til hvis du ombestemmer dig.", DialogOutcome.None),
             new Node("found", "MIN LILLE HUND! Den har været væk i flere dage. Tusind tak!", 
                 DialogOutcome.Gift),
             new Node("move", "Her i byen taler vi pænt til hinanden!",
                 new List<(string,string)> {("die", "Så skal byen DØØØØØØØ!"), 
                     ("sorry", "Undskyld. Det har været en dårlig dag")}),
             new Node("die", "VI BLIVER ANGREBET!", DialogOutcome.Hostile),
-            new Node("sorry", "Det er i orden. Det kan ske for alle", ("welcome", "Tak")),
+            new Node("sorry", "Det er i orden. Det kan ske for alle", DialogOutcome.None),
             new Node("goodbye", "Held og lykke på dine rejser", DialogOutcome.None)
         };
     }
