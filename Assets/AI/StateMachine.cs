@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 enum State
@@ -19,9 +21,14 @@ class StateMachine : MonoBehaviour
     public StateMaterial[] StateMaterials;
     public GameObject ShotPrefab;
 
+    public List<Shooter> shooterList = new List<Shooter>();
+    public List<State> stateList = new List<State>();
+
     /*JoinState is called by the shooters to indicate that they want to be part of the state machine*/
     public void JoinState(Shooter shooter, State state)
     {
+        shooterList.Add(shooter);
+        stateList.Add(state);
         shooter.GetComponent<Renderer>().material = StateMaterials.First(m => m.State == state).Material;
     }
 
@@ -29,6 +36,54 @@ class StateMachine : MonoBehaviour
     public void TransferState(Shooter shooter, State state)
     {
         shooter.GetComponent<Renderer>().material = StateMaterials.First(m => m.State == state).Material;
+        if (shooterList.Contains(shooter))
+        {
+            stateList[shooterList.IndexOf(shooter)] = state;
+        }
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < shooterList.Count; i++)
+        {
+            switch (stateList[i])
+            {
+                case State.Attacking:
+                    Attack(shooterList[i]);
+                    break;
+                case State.Fleeing:
+                    Flee(shooterList[i]);
+                    break;
+                case State.Moving:
+                default:
+                    Move(shooterList[i]);
+                    break;
+            }
+        }
+    }
+
+    private async Task UpdateParallel()
+    {
+        Task[] tasks = new Task[shooterList.Count];
+
+        for (int i = 0; i < shooterList.Count; i++)
+        {
+            switch (stateList[i])
+            {
+                case State.Attacking:
+                    tasks[i] = Task.Run(() => Attack(shooterList[i]));
+                    break;
+                case State.Fleeing:
+                    tasks[i] = Task.Run(() => Flee(shooterList[i]));
+                    break;
+                case State.Moving:
+                default:
+                    tasks[i] = Task.Run(() => Move(shooterList[i]));
+                    break;
+            }
+        }
+
+        await Task.WhenAll(tasks);
     }
 
     #region State Logic

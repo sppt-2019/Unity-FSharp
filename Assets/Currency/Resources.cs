@@ -2,6 +2,9 @@
 
 public class Resources : MonoBehaviour
 {
+    const int DILDSILD_TO_MILDABILD = 17;
+    const int MILDABILD_TO_VILDILD = 8;
+
     public int DildSild;
     public int MildAbild;
     public int Vildild;
@@ -11,6 +14,13 @@ public class Resources : MonoBehaviour
     void Start()
     {
         ResourceController.UpdateResources(DildSild, MildAbild, Vildild);
-        ResourceController.UpdateResults(0, 0, 0);
+
+        MildAbild += Mathf.FloorToInt(DildSild / DILDSILD_TO_MILDABILD);
+        DildSild = DildSild % DILDSILD_TO_MILDABILD;
+
+        Vildild += Mathf.FloorToInt(MildAbild / MILDABILD_TO_VILDILD);
+        MildAbild = MildAbild % MILDABILD_TO_VILDILD;
+
+        ResourceController.UpdateResults(DildSild, MildAbild, Vildild);
     }
 }
