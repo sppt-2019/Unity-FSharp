@@ -16,7 +16,6 @@ type FRP_Shot() =
 
     member this.Start() =
         GameObject.Destroy (this.gameObject, 5.0f)
-        Debug.Log("shot.Start()")
 
         this.ReactTo (FRPEvent.Update, 
             (fun () -> 
@@ -30,6 +29,5 @@ type FRP_Shot() =
 
         this.ReactTo<Collision> (FRPEvent.CollisionExit,
             (fun c -> 
-                Debug.Log("Collision in shot")
                 _hasExitedSpawnerCollider <- true)
         )

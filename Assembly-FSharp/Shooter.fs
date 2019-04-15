@@ -42,7 +42,10 @@ type FRP_Shooter() =
             with get() = this.transform
 
     member this.Start() =
-        let stateMachine = GameObject.FindGameObjectWithTag("StateMachine").GetComponent<FRP_StateMachine>();
+        let stateMachineGO = GameObject.FindGameObjectsWithTag("StateMachine").[1]
+        Debug.Log("StatemachineGO is " + stateMachineGO.ToString())
+        let stateMachine = stateMachineGO.GetComponent<FRP_StateMachine>()
+        Debug.Log(sprintf "Statemachine is %A" stateMachine)
         stateMachine.JoinState this State.Moving
 
         this.ReactTo<Collision> (FRPEvent.CollisionEnter, 

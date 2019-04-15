@@ -21,8 +21,8 @@ type FMBRanger() =
     let mutable RotationSpeed = 25.0f
     [<SerializeField>]
     let mutable ShotPrefab:GameObject = null
-    [<SerializeField>]
-    let mutable StateMaterials:F_StateMachineMaterials = null
+    
+    let mutable StateMaterials:StateMaterialsComponent = null
     
     let mutable MoveTarget:Vector3 = Vector3.zero
     let mutable shotsBeforeStateChange:int = 5
@@ -36,12 +36,13 @@ type FMBRanger() =
     let mutable ShotsBeforeStateChange = 5
     
     member this.Start () =
-        StateMaterials <- GameObject.FindGameObjectWithTag("Plastic").GetComponent<F_StateMachineMaterials>();
+        StateMaterials <- GameObject.FindGameObjectWithTag("Plastic").GetComponent<StateMaterialsComponent>();
+        this.InitEntityState state
     
     member this.Move () =
         let trans = this.transform
         if Vector3.Distance(trans.position, MoveTarget) < 0.1f then
-            State.Shooting
+            State.Attacking
         else
             trans.LookAt(MoveTarget)
             trans.position <- trans.position + (trans.forward * Speed * Time.deltaTime)
@@ -63,14 +64,14 @@ type FMBRanger() =
             this.ShootAt attackTarget
             ShotsBeforeStateChange <- ShotsBeforeStateChange - 1
             Cooldowner <- ShotCooldown
-            State.Shooting
+            State.Attacking
         else
-            State.Shooting
+            State.Attacking
             
     member this.Flee () =
         Cooldowner <- Cooldowner - Time.deltaTime
         if Cooldowner <= 0.0f then
-            State.Shooting
+            State.Attacking
         else
             let trans = this.transform
             let step = Speed * Time.deltaTime * 2.0f
@@ -79,26 +80,25 @@ type FMBRanger() =
             State.Fleeing
     
     member this.InitEntityState (state:State) =
-        let stateMaterial = StateMaterials.StateMaterial |> Array.find (fun sm -> sm.GetState() = state)
-        this.GetComponent<Renderer>().material <- stateMaterial.GetMaterial()
+        let stateMaterial = StateMaterials.StateMaterials |> Array.find (fun sm -> sm.State = state)
+        this.GetComponent<Renderer>().material <- stateMaterial.Material
 
         match state with
         | State.Moving -> 
-            let newTarget = new Vector3(Random.Range(-3.7f, 5.7f), this.transform.position.y, Random.Range(-6.0f, 3.4f))
-            MoveTarget <- newTarget;
+            MoveTarget <- Vector3(Random.Range(-3.7f, 5.7f), this.transform.position.y, Random.Range(-6.0f, 3.4f))
         | State.Fleeing ->
             Cooldowner <- 4.0f;
-        | State.Shooting ->
+        | State.Attacking ->
             ShotsBeforeStateChange <- 5;
             Cooldowner <- 0.0f;
             attackTarget <- GameObject.FindGameObjectWithTag("Tower").transform;
         | _ -> invalidArg "state" "Out of bounds in enum State. Correct values are Moving, Fleeing or Shooting"
 
-    member this.UpdateEntities ():Unit =
+    member this.Update () =
         let newState =
             match state with
             | State.Moving -> this.Move ()
-            | State.Shooting -> this.Shoot ()
+            | State.Attacking -> this.Shoot ()
             | State.Fleeing -> this.Flee ()
             | _ -> invalidArg "state" "Out of bounds in enum State. Correct values are Moving, Fleeing or Shooting"
             
@@ -113,3 +113,4 @@ type FMBRanger() =
             let s = collision.collider.GetComponent<FRP_Shot>()
             if s = null |> not && s.HasExitedSpawnerCollider then
                 state <- State.Fleeing
+                this.InitEntityState state

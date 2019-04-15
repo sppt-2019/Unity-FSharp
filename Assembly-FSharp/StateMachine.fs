@@ -4,8 +4,8 @@ open UnityEngine
 open System
 open Interfaces
 
-[<Serializable>]
-type State = Fleeing=0 | Moving=1 | Shooting=2
+//[<Serializable>]
+//type State = Fleeing=0 | Moving=1 | Shooting=2
 
 [<Serializable>]
 type StateMaterial() = 
@@ -27,7 +27,7 @@ type FRP_StateMachine() =
     
     let move (entity:IStateMachineEntity) =
         if Vector3.Distance(entity.transform.position, entity.MoveTarget) < 0.1f then
-            (State.Shooting, entity)
+            (State.Attacking, entity)
         else
             entity.transform.LookAt(entity.MoveTarget)
             entity.transform.position <- entity.transform.position + (entity.transform.forward * entity.Speed * Time.deltaTime)
@@ -48,14 +48,14 @@ type FRP_StateMachine() =
             shootAt entity entity.AttackTarget
             entity.ShotsBeforeStateChange <- entity.ShotsBeforeStateChange - 1
             entity.Cooldowner <- entity.ShotCooldown
-            (State.Shooting, entity)
+            (State.Attacking, entity)
         else
-            (State.Shooting, entity)
+            (State.Attacking, entity)
             
     let flee (entity:IStateMachineEntity) =
         entity.Cooldowner <- entity.Cooldowner - Time.deltaTime
         if entity.Cooldowner <= 0.0f then
-            (State.Shooting, entity)
+            (State.Attacking, entity)
         else 
             let step = entity.Speed * Time.deltaTime * 2.0f
             entity.transform.Rotate(0.0f, UnityEngine.Random.Range(-entity.RotationSpeed, entity.RotationSpeed), 0.0f)
@@ -72,7 +72,7 @@ type FRP_StateMachine() =
             entity.MoveTarget <- newTarget;
         | State.Fleeing ->
             entity.Cooldowner <- 4.0f;
-        | State.Shooting ->
+        | State.Attacking ->
             entity.ShotsBeforeStateChange <- 5;
             entity.Cooldowner <- 0.0f;
             entity.AttackTarget <- GameObject.FindGameObjectWithTag("Tower").transform;
@@ -87,7 +87,7 @@ type FRP_StateMachine() =
                 (fun e -> 
                     match e with
                     | (State.Moving, entity) -> move entity
-                    | (State.Shooting, entity) -> shoot entity
+                    | (State.Attacking, entity) -> shoot entity
                     | (State.Fleeing, entity) -> flee entity
                     | _ -> invalidArg "state" "Out of bounds in enum State. Correct values are Moving, Fleeing or Shooting")
         entities
@@ -115,5 +115,4 @@ type FRP_StateMachine() =
         initEntityState entity state
 
     member this.Start() =
-        Debug.Log("Ding dong motherfucker")
         this.ReactTo(FRPEvent.Update, this.UpdateEntities)

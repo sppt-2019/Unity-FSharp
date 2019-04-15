@@ -979,7 +979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1056795413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,14 +1195,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc38532b11255b145af6818fea149d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RangerPrefab: {fileID: 7878400414017020908, guid: ac89982606b2a1d48b92fa490771a644,
-    type: 3}
-  FRP_RangerPrefab: {fileID: 813523437537421142, guid: e91d9bac62fecf940a30c7e24bdd9528,
-    type: 3}
   NumberOfRangers: 10
   XBoundary: {x: -3.8, y: 5.8}
   ZBoundary: {x: -6.1, y: 3.5}
-  UseFRP: 1
+  RangerType: 3
+  RangerPrefabs:
+  - Type: 0
+    Prefab: {fileID: 7878400414017020908, guid: cedbf2a33aa7bed47ad91c6a0d6739f7,
+      type: 3}
+  - Type: 1
+    Prefab: {fileID: 7878400414017020908, guid: ac89982606b2a1d48b92fa490771a644,
+      type: 3}
+  - Type: 2
+    Prefab: {fileID: 813523437537421142, guid: 685646d1800b0434a86addb5ba239ef0, type: 3}
+  - Type: 3
+    Prefab: {fileID: 813523437537421142, guid: e91d9bac62fecf940a30c7e24bdd9528, type: 3}
 --- !u!4 &1351931617
 Transform:
   m_ObjectHideFlags: 0
@@ -1245,16 +1252,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1351931615}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1489412744, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
+  m_Script: {fileID: 11500000, guid: 3bf2801982fae3e4780bd0f33fb52def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateMaterials:
-  - State: 0
-    Material: {fileID: 2100000, guid: ba79acfd74730a348ae06b15865c1b7f, type: 2}
-  - State: 1
-    Material: {fileID: 2100000, guid: 7f87c2fd4ae7eeb469719cc939e649dd, type: 2}
-  - State: 2
-    Material: {fileID: 2100000, guid: 742c09886101ef240823d021a1769e24, type: 2}
+  outputFile: results.csv
+  FrameCountCap: 600
 --- !u!1 &1454461147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,7 +1631,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1932910221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -479319375, guid: 691b4c7f1a27a7910b140935ab240761, type: 3}
+  m_Script: {fileID: -479319375, guid: f14cac6ad44df0c48b0f8f5772ec89b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StateMaterials:

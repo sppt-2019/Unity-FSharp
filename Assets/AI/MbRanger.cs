@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MbRanger : MonoBehaviour
 {
-    private State _state;
+    private State _state = State.Moving;
     
     public float speed;
     public float rotationSpeed = 25f;
@@ -18,10 +18,11 @@ public class MbRanger : MonoBehaviour
     public GameObject shotPrefab;
 
     public StateMaterialsComponent StateMaterials;
-
+    
     private void Start()
     {
         StateMaterials = GameObject.FindGameObjectWithTag("Plastic").GetComponent<StateMaterialsComponent>();
+        InitNewState(_state);
     }
 
     private void InitNewState(State state)
@@ -51,7 +52,7 @@ public class MbRanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var state = State.Moving;
+        State state;
         switch (_state)
         {
             case State.Fleeing:
@@ -134,6 +135,7 @@ public class MbRanger : MonoBehaviour
             if(shot != null && shot.HasExitedSpawnerCollider)
             {
                 _state = State.Fleeing;
+                InitNewState(_state);
             }
         }
 
