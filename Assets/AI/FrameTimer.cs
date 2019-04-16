@@ -22,6 +22,7 @@ public class FrameTimer : MonoBehaviour
         _resultsFile = new StreamWriter(outputFile, false);
         _resultsFile.WriteLine("Frame Count,Frame Time (ns)");
         _stopwatch = Stopwatch.StartNew();
+        Debug.Log(Stopwatch.Frequency);
     }
 
     // Update is called once per frame
