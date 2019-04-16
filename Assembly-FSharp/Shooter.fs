@@ -43,9 +43,7 @@ type FRP_Shooter() =
 
     member this.Start() =
         let stateMachineGO = GameObject.FindGameObjectsWithTag("StateMachine").[1]
-        Debug.Log("StatemachineGO is " + stateMachineGO.ToString())
         let stateMachine = stateMachineGO.GetComponent<FRP_StateMachine>()
-        Debug.Log(sprintf "Statemachine is %A" stateMachine)
         stateMachine.JoinState this State.Moving
 
         this.ReactTo<Collision> (FRPEvent.CollisionEnter, 
@@ -54,7 +52,6 @@ type FRP_Shooter() =
                 not (shot = null) && shot.HasExitedSpawnerCollider
                 ),
             (fun c -> 
-                Debug.Log("Shit " + this.name + " was shot :(")
                 GameObject.FindGameObjectWithTag("StateMachine").GetComponent<FRP_StateMachine>().TransferState this State.Fleeing))
 
         this.ReactTo<Collision> (FRPEvent.CollisionEnter,

@@ -78,7 +78,7 @@ type FRP_StateMachine() =
             entity.AttackTarget <- GameObject.FindGameObjectWithTag("Tower").transform;
         | _ -> invalidArg "state" "Out of bounds in enum State. Correct values are Moving, Fleeing or Shooting"
 
-    let mutable entities:Tuple<State,IStateMachineEntity> list = []
+    let mutable entities:(State*IStateMachineEntity) list = []
 
     member this.UpdateEntities ():Unit =
         let newEntities =

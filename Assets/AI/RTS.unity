@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc38532b11255b145af6818fea149d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfRangers: 10
+  NumberOfRangers: 250
   XBoundary: {x: -3.8, y: 5.8}
   ZBoundary: {x: -6.1, y: 3.5}
   RangerType: 3
@@ -1255,8 +1255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf2801982fae3e4780bd0f33fb52def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outputFile: results.csv
-  FrameCountCap: 600
+  outputFile: FRP-inverse-250.csv
+  FrameCountCap: 900
 --- !u!1 &1454461147
 GameObject:
   m_ObjectHideFlags: 0

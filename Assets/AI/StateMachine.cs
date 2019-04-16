@@ -31,22 +31,23 @@ class StateMachine : MonoBehaviour
     {
         var newStates = _stateList.Select(s =>
         {
-            switch (s.state)
+            var (state, entity) = s;
+            switch (state)
             {
                 case State.Fleeing:
-                    return Flee(s.entity);
+                    return Flee(entity);
                 case State.Moving:
-                    return Move(s.entity);
+                    return Move(entity);
                 case State.Attacking:
-                    return Attack(s.entity);
-                default: return (State.Moving, s.entity);
+                    return Attack(entity);
+                default: return (State.Moving, entity);
             }
         }).ToList();
 
-        foreach (var statePair in newStates.Zip(_stateList, (sNew, sOld) => (sNew,sOld)))
+        foreach (var ((newState, entity), oldState) in newStates.Zip(_stateList, (sNew, sOld) => (sNew,sOld)))
         {
-            if (statePair.sNew.Item1 != statePair.sOld.state)
-                TransferState(statePair.sNew.entity, statePair.sNew.Item1);
+            if (newState != oldState.state)
+                TransferState(entity, newState);
         }
     }
 
@@ -118,9 +119,8 @@ class StateMachine : MonoBehaviour
         if(s.Cooldowner <= 0f)
             return (State.Attacking, s);
 
-        var stepSize = s.Speed * Time.deltaTime * 2;
         s.transform.Rotate(0, UnityEngine.Random.Range(-s.RotationSpeed, s.RotationSpeed), 0);
-        s.transform.position = s.transform.position + s.transform.forward * stepSize;
+        s.transform.position += s.transform.forward * s.Speed * Time.deltaTime * 2;
         return (State.Fleeing, s);
     }
 
@@ -130,7 +130,7 @@ class StateMachine : MonoBehaviour
             return (State.Attacking, s);
 
         s.transform.LookAt(s.MoveTarget);
-        s.transform.position = s.transform.position + (s.transform.forward * s.Speed * Time.deltaTime);
+        s.transform.position += s.transform.forward * s.Speed * Time.deltaTime;
         return (State.Moving, s);
     }
 }
