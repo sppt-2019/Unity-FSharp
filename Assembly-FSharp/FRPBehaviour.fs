@@ -31,17 +31,22 @@ type FRPBehaviour() =
     let CollisionExitEvent = new Event<Collision>()
     let TriggerEnterEvent = new Event<Collider>()
     let TriggerExitEvent = new Event<Collider>()
+    
+    static let mouseButtons =
+        let mb = Enum.GetValues(typeof<MouseButton>)
+        [mb.GetLowerBound 0 .. mb.GetUpperBound 0]
 
+    static let keyboardButtons =
+        let keys = Enum.GetValues (typeof<KeyCode>)
+        [keys.GetLowerBound 0 .. keys.GetUpperBound 0]
+        
+    
     let AnyMouseButton () =
-        let mouseButtons = Enum.GetValues(typeof<MouseButton>)
-        [mouseButtons.GetLowerBound 0..mouseButtons.GetUpperBound 0]
+        mouseButtons
         |> List.exists (fun b -> Input.GetMouseButton b)
 
     let AnyKeyboardKey () =
-        let keys = Enum.GetValues (typeof<KeyCode>)
-        let lb = keys.GetLowerBound 0
-        let ub = keys.GetUpperBound 0
-        [lb..ub]
+        keyboardButtons
         |> List.exists (fun k -> Input.GetKey (enum<KeyCode> k))
 
     member this.GetEvent<'T> (event:FRPEvent):IEvent<'T> =
