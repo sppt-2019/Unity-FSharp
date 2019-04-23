@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class ResultsConcatter : MonoBehaviour
 {
-    const string FolderName = "il2cpp-results";
+    public string FolderName = "il2cpp-results";
+    public string OutputFile = "output.csv";
 
     // Start is called before the first frame update
+
     void Start()
     {
-        File.Delete(Path.Combine(FolderName, "output.csv"));
+        File.Delete(Path.Combine(FolderName, OutputFile));
         
         var files = Directory.GetFiles(FolderName);
         var concattedFiles = new List<(string key, List<string> values)>();
@@ -66,7 +68,7 @@ public class ResultsConcatter : MonoBehaviour
 
     private void OutputCsv(List<(string key, List<string> values)> readings)
     {
-        using (var file = new StreamWriter(Path.Combine(FolderName, "output.csv")))
+        using (var file = new StreamWriter(Path.Combine(FolderName, OutputFile)))
         {
             foreach (var reading in readings)
             {

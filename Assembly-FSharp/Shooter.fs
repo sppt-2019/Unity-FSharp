@@ -4,7 +4,7 @@ open System
 open Interfaces
 
 type FRP_Shooter() =
-    inherit FRPBehaviour()
+    inherit MonoBehaviour()
     
     [<SerializeField>]
     let mutable Speed = 0.0f
@@ -42,19 +42,13 @@ type FRP_Shooter() =
             with get() = this.transform
 
     member this.Start() =
-        let stateMachineGO = GameObject.FindGameObjectsWithTag("StateMachine").[1]
+        let stateMachineGO = GameObject.FindGameObjectsWithTag("StateMachine").[0]
         let stateMachine = stateMachineGO.GetComponent<FRP_StateMachine>()
         stateMachine.JoinState this State.Moving
 
-        this.ReactTo<Collision> (FRPEvent.CollisionEnter, 
-            (fun c -> 
-                let shot = c.collider.GetComponent<FRP_Shot>()
-                not (shot = null) && shot.HasExitedSpawnerCollider
-                ),
-            (fun c -> 
-                GameObject.FindGameObjectWithTag("StateMachine").GetComponent<FRP_StateMachine>().TransferState this State.Fleeing))
-
-        this.ReactTo<Collision> (FRPEvent.CollisionEnter,
-            (fun c -> c.collider.name = "Boundary"),
-            (fun c -> this.transform.Rotate(0.0f, 180.0f, 0.0f))
-        )
+    member this.OnCollisionEnter (collision:Collision) =
+        let shot = collision.collider.GetComponent<FRP_Shot>()
+        if not (shot = null) && shot.HasExitedSpawnerCollider then
+            GameObject.FindGameObjectWithTag("StateMachine").GetComponent<FRP_StateMachine>().TransferState this State.Fleeing
+        else if collision.collider.name = "Boundary" then
+            this.transform.Rotate(0.0f, 180.0f, 0.0f)
