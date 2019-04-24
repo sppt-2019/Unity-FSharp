@@ -11,10 +11,12 @@ public class Shooter : MonoBehaviour
     public Vector3 MoveTarget;
     public readonly float ShotCooldown = 2f;
     public float Cooldowner;
+    public Renderer Renderer { get; private set; }
 
     private void Start()
     {
-        GameObject.FindGameObjectWithTag("StateMachine").GetComponent<StateMachine>().JoinState(this, State.Moving);
+        Renderer = GetComponent<Renderer>();
+        StateMachine.Instance.JoinState(this, State.Moving);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -22,7 +24,7 @@ public class Shooter : MonoBehaviour
         var shot = collision.collider.GetComponent<Shot>();
         if(shot != null && shot.HasExitedSpawnerCollider)
         {
-            GameObject.FindGameObjectWithTag("StateMachine").GetComponent<StateMachine>().JoinState(this, State.Fleeing);
+            StateMachine.Instance.JoinState(this, State.Fleeing);
         }
     }
 
