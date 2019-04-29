@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
-enum State
+public enum State
 {
-    Fleeing, Moving, Attacking
+    None, Fleeing, Moving, Attacking
 }
 
 [Serializable]
