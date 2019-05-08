@@ -1,8 +1,8 @@
-# Unity F#
+# F# in Unity - Eight Scenes that Examine if it Makes Sense
 
 This repository contains eight scenes that are used to test the use of F# in Unity. We use the [F# Unity Integration plugin](https://github.com/sppt-2k19/unity-fsharp-integration) to compile and include F# in Unity.
 
-## Getting started
+## Getting Started
 
 As part of the project we have written [a small guide that introduces Unity developers to F# in Unity](https://sppt-2019.github.io/unity-fsharp-introduction/). Each scene in this project is associated with a task tbat is meant to explore a single aspect of F# in Unity. The tasks descriptions can be found [here](https://sppt-2019.github.io/unity-fsharp-introduction/tasks) (currently only in Danish, but please open an issue if we should translate them).
 
