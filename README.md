@@ -1,24 +1,33 @@
 # Unity F#
 
-This repository contains a setup that allows the programmer to write F# components for a Unity game.
+This repository contains eight scenes that are used to test the use of F# in Unity. We use the [F# Unity Integration plugin](https://github.com/sppt-2k19/unity-fsharp-integration) to compile and include F# in Unity.
 
 ## Getting started
-Open up the sub-project called UnityFunctional in Visual Studio. This project includes a post-build script that moves the generated 
-assemblies from the UnityFunctional project and into the Unity project. You will need to change this by **Selecting UnityFunctional**
-and hitting <kbd>Alt</kbd>+<kbd>Enter</kbd>, which brings up the project properties panel. Navigate to **Build Events** and change:
-```bash
-move /Y compiled_dll_path unity_frameworks_path
+
+As part of the project we have written [a small guide that introduces Unity developers to F# in Unity](https://sppt-2019.github.io/unity-fsharp-introduction/). Each scene in this project is associated with a task tbat is meant to explore a single aspect of F# in Unity. The tasks descriptions can be found [here](https://sppt-2019.github.io/unity-fsharp-introduction/tasks) (currently only in Danish, but please open an issue if we should translate them).
+
+The project can be opened in Unity and you can use either Visual Studio or Rider for the F# and C# code. The [F# Unity Integration plugin](https://github.com/sppt-2k19/unity-fsharp-integration) adds a new menu in Unity, where you may open, configure and compile the F# project.
+
+## Functional Reactive Programming
+
+We have added a simple functional reactive programming system in Unity. This may be accessed by inheriting your components from `FRPBehaviour`. This enables the use of the `ReactTo` function:
+```fsharp
+type Jumper() =
+  inherit FRPBehaviour()
+  
+  [<SerializeField>]
+  let mutable JumpForce = 200.0f
+  
+  member this.Start() =
+    this.ReactTo(
+      FRPEvent.Keyboard,
+      (fun () -> Input.GetKeyDown(KeyCode.Space)),
+      (fun () ->
+        let up = this.transform.up * JumpForce
+        this.transform.AddForce(up)))
 ```
-To the corresponding paths on your system. I had to use absolute paths and the compiled dll will end up under `Unity-F#\UnityFunctional\UnityFunctional\bin\Release\net45\UnityFunctional.dll`.
+A word of caution though, the FRP system currently introduces quite a large overhead as it is naïvely implemented. We have started an optimised implementation on the frp-engine branch, which aims at optimising performance. We have an introduction to the use of FRP in Unity [here](https://sppt-2019.github.io/unity-fsharp-introduction/frp.html) (currently only in Danish, but please open an issue if you want a translation).
 
-Now open up the Unity project.
+## Building & Running
 
-## Building
-When you have written some F# code and wish to run it in Unity you click <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> and the sources
-are compiled and moved to Unity. When you open Unity again, Unity will take a short while to compile the new dll and should become 
-responsive again fairly quickly.
-
-Any types you have defined in F# that inherits from MonoBehaviour should automatically be available from the 'Add Component' dropdown.
-
-## Running
-Add (and configure) any F# components you want and hit the play button in Unity.
+The F# project can be compiled from Unity by pressing <kbd>F6</kbd>. Afterwards, all components implemented in F# may be found under the 'Add Component' menu. The project can be started by pressing the play button in Unity.
