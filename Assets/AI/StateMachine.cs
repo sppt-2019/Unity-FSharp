@@ -1,34 +1,83 @@
 ﻿using System;
 using System.Linq;
+using AI.Job_Systems;
 using UnityEngine;
+using Random = System.Random;
 
-enum State
+public enum State
 {
     Fleeing, Moving, Attacking
 }
 
 [Serializable]
-struct StateMaterial
+public struct StateMaterial
 {
     public State State;
     public Material Material;
 }
 
-class StateMachine : MonoBehaviour
+public class StateMachine : MonoBehaviour
 {
     public StateMaterial[] StateMaterials;
     public GameObject ShotPrefab;
+    public float ShooterYHeight = 1.1f;
+    public Vector2 XBoundary;
+    public Vector2 ZBoundary;
 
     /*JoinState is called by the shooters to indicate that they want to be part of the state machine*/
     public void JoinState(Shooter shooter, State state)
     {
         shooter.GetComponent<Renderer>().material = StateMaterials.First(m => m.State == state).Material;
+        shooter.State = state;
+        UpdateStateJobSystem.Instance.AddShooter(shooter);
+
+        InitializeShooterState(shooter, state);
+    }
+
+    private void InitializeShooterState(Shooter shooter, State state)
+    {
+        switch (state)
+        {
+            case State.Fleeing:
+                FleeJobSystem.Instance.StartFleeing(shooter);
+                break;
+            case State.Moving:
+                var randX = UnityEngine.Random.Range(XBoundary.x, XBoundary.y);
+                var randZ = UnityEngine.Random.Range(ZBoundary.x, ZBoundary.y);
+                var target = new Vector3(randX, ShooterYHeight, randZ);
+                MovingJobSytem.Instance.StartMoving(shooter, target);
+                break;
+            case State.Attacking:
+                AttackingJobSystem.Instance.StartAttacking(shooter);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(state), state, null);
+        }
     }
 
     /*TransferState is called by the shooters to indicate that they want to move from one state to another*/
     public void TransferState(Shooter shooter, State state)
     {
         shooter.GetComponent<Renderer>().material = StateMaterials.First(m => m.State == state).Material;
+
+        switch (shooter.State)
+        {
+            case State.Fleeing:
+                FleeJobSystem.Instance.StopFleeing(shooter);
+                break;
+            case State.Moving:
+                MovingJobSytem.Instance.StopMoving(shooter);
+                break;
+            case State.Attacking:
+                AttackingJobSystem.Instance.StopAttacking(shooter);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(state), state, null);
+        }
+
+        InitializeShooterState(shooter, state);
+        
+        shooter.State = state;
     }
 
     #region State Logic
@@ -58,33 +107,6 @@ class StateMachine : MonoBehaviour
             s.ShotsBeforeStateChange--;
             s.Cooldowner = s.ShotCooldown;
         }
-    }
-
-    public void Flee(Shooter s)
-    {
-        s.Cooldowner -= Time.deltaTime;
-        if(s.Cooldowner <= 0f)
-        {
-            TransferState(s, State.Attacking);
-            return;
-        }
-
-        var stepSize = s.Speed * Time.deltaTime * 2;
-        s.transform.Rotate(0, UnityEngine.Random.Range(-s.RotationSpeed, s.RotationSpeed), 0);
-        s.transform.position = s.transform.position + s.transform.forward * stepSize;
-    }
-
-    public void Move(Shooter s)
-    {
-        if(Vector3.Distance(s.transform.position, s.MoveTarget) < 0.1f)
-        {
-            Debug.Log(s.name + " has arrived, attacking");
-            TransferState(s, State.Attacking);
-            return;
-        }
-
-        s.transform.LookAt(s.MoveTarget);
-        s.transform.position = s.transform.position + (s.transform.forward * s.Speed * Time.deltaTime);
     }
     #endregion
 }

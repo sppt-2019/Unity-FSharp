@@ -9,6 +9,7 @@ public class Shooter : MonoBehaviour
     public Vector3 MoveTarget;
     public readonly float ShotCooldown = 2f;
     public float Cooldowner;
+    public State State;
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class Shooter : MonoBehaviour
         var shot = collision.collider.GetComponent<Shot>();
         if(shot != null && shot.HasExitedSpawnerCollider)
         {
-            GameObject.FindGameObjectWithTag("StateMachine").GetComponent<StateMachine>().JoinState(this, State.Fleeing);
+            GameObject.FindGameObjectWithTag("StateMachine").GetComponent<StateMachine>().TransferState(this, State.Fleeing);
         }
     }
 
