@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1009,6 +1009,7 @@ GameObject:
   - component: {fileID: 1056795419}
   - component: {fileID: 1056795418}
   - component: {fileID: 1056795417}
+  - component: {fileID: 1056795420}
   m_Layer: 0
   m_Name: StateMachine
   m_TagString: StateMachine
@@ -1124,6 +1125,21 @@ MonoBehaviour:
   TimeBetweenshots: 2
   NumberOfShotsBeforeStateChange: 5
   AttackTarget: {fileID: 367492353}
+--- !u!114 &1056795420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056795412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca20f0aeb660f8b45a1d2aa0d9e08295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Folder: Concurrent
+  outputFile: 1500.csv
+  FrameCountCap: 900
 --- !u!1 &1203555779
 GameObject:
   m_ObjectHideFlags: 0
