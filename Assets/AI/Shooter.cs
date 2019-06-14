@@ -11,7 +11,8 @@ public class Shooter : MonoBehaviour
     public Vector3 MoveTarget;
     public readonly float ShotCooldown = 2f;
     public float Cooldowner;
-
+    public State state;
+    
     private void Start()
     {
         GameObject.FindGameObjectWithTag("StateMachine").GetComponent<StateMachine>().JoinState(this, State.Moving);
@@ -22,7 +23,7 @@ public class Shooter : MonoBehaviour
         var shot = collision.collider.GetComponent<Shot>();
         if(shot != null && shot.HasExitedSpawnerCollider)
         {
-            GameObject.FindGameObjectWithTag("StateMachine").GetComponent<StateMachine>().JoinState(this, State.Fleeing);
+            GameObject.FindGameObjectWithTag("StateMachine").GetComponent<StateMachine>().TransferState(this, State.Fleeing);
         }
     }
 
@@ -31,7 +32,6 @@ public class Shooter : MonoBehaviour
         if (other.name == "Boundary")
         {
             transform.Rotate(0, 180, 0);
-            return;
         }
     }
 }

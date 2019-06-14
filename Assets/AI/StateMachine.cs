@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
-enum State
+public enum State
 {
     Fleeing, Moving, Attacking
 }
@@ -20,33 +20,38 @@ class StateMachine : MonoBehaviour
 {
     public StateMaterial[] StateMaterials;
     public GameObject ShotPrefab;
-    private List<(State state, Shooter entity)> _stateList;
+    private List<Shooter> _shooters;
+    public Transform AttackTarget;
 
     private void Start()
     {
-        _stateList = new List<(State state, Shooter entity)>();
+        _shooters = new List<Shooter>();
     }
 
     public void Update()
     {
-        var newStates = _stateList.Select(s =>
+        for (var i = 0; i < _shooters.Count; i++)
         {
-            switch (s.state)
+            State newState;
+            var shooter = _shooters[i];
+            switch (shooter.state)
             {
                 case State.Fleeing:
-                    return Flee(s.entity);
+                    newState = Flee(shooter);
+                    break;
                 case State.Moving:
-                    return Move(s.entity);
+                    newState = Move(shooter);
+                    break;
                 case State.Attacking:
-                    return Attack(s.entity);
-                default: return (State.Moving, s.entity);
+                    newState = Attack(shooter);
+                    break;
+                default: 
+                    newState = shooter.state;
+                    break;
             }
-        }).ToList();
-
-        foreach (var statePair in newStates.Zip(_stateList, (sNew, sOld) => (sNew,sOld)))
-        {
-            if (statePair.sNew.Item1 != statePair.sOld.state)
-                TransferState(statePair.sNew.entity, statePair.sNew.Item1);
+            
+            if(newState != shooter.state)
+                TransferState(shooter, newState);
         }
     }
 
@@ -69,7 +74,7 @@ class StateMachine : MonoBehaviour
             case State.Attacking:
                 shooter.ShotsBeforeStateChange = 5;
                 shooter.Cooldowner = 0f;
-                shooter.AttackTarget = GameObject.FindGameObjectWithTag("Tower").transform;
+                shooter.AttackTarget = AttackTarget;
                 break;
         }
     }
@@ -77,20 +82,21 @@ class StateMachine : MonoBehaviour
     public void TransferState(Shooter shooter, State state)
     {
         _initialiseState(state, shooter);
-        _stateList = _stateList.Select(s => s.entity == shooter ? (state, shooter) : s).ToList();
+        shooter.state = state;
     }
 
     public void JoinState(Shooter entity, State state)
     {
         _initialiseState(state, entity);
-        _stateList.Add((state, entity));
+        entity.state = state;
+        _shooters.Add(entity);
     }
 
-    public (State state,Shooter entity) Attack(Shooter s)
+    public State Attack(Shooter s)
     {
         //Check if the shooter has any shots left, move a little if not
         if (s.ShotsBeforeStateChange == 0)
-            return (State.Moving, s);
+            return State.Moving;
 
         //Decrement the cooldown and shoot if ready
         s.Cooldowner -= Time.deltaTime;
@@ -100,37 +106,41 @@ class StateMachine : MonoBehaviour
             s.ShotsBeforeStateChange--;
             s.Cooldowner = s.ShotCooldown;
         }
-        return (State.Attacking, s);
+        return State.Attacking;
     }
 
     public void ShootAt(Shooter r, Transform target)
     {
-        var lookAtTransform = new Vector3(target.position.x, r.transform.position.y, target.position.z);
+        var shooterPosition = r.transform.position;
+        var targetPosition = target.position;
+        var lookAtTransform = new Vector3(targetPosition.x, shooterPosition.y, targetPosition.z);
 
         var shot = Instantiate(ShotPrefab);
-        shot.transform.position = r.transform.position;
+        shot.transform.position = shooterPosition;
         shot.transform.LookAt(lookAtTransform, Vector3.up);
     }
 
-    public (State state, Shooter entity) Flee(Shooter s)
+    public State Flee(Shooter s)
     {
         s.Cooldowner -= Time.deltaTime;
         if(s.Cooldowner <= 0f)
-            return (State.Attacking, s);
+            return State.Attacking;
 
         var stepSize = s.Speed * Time.deltaTime * 2;
-        s.transform.Rotate(0, UnityEngine.Random.Range(-s.RotationSpeed, s.RotationSpeed), 0);
-        s.transform.position = s.transform.position + s.transform.forward * stepSize;
-        return (State.Fleeing, s);
+        var shooterTrans = s.transform;
+        shooterTrans.Rotate(0, UnityEngine.Random.Range(-s.RotationSpeed, s.RotationSpeed), 0);
+        shooterTrans.position = shooterTrans.position + shooterTrans.forward * stepSize;
+        return State.Fleeing;
     }
 
-    public (State state, Shooter entity) Move(Shooter s)
+    public State Move(Shooter s)
     {
         if(Vector3.Distance(s.transform.position, s.MoveTarget) < 0.1f)
-            return (State.Attacking, s);
+            return State.Attacking;
 
-        s.transform.LookAt(s.MoveTarget);
-        s.transform.position = s.transform.position + (s.transform.forward * s.Speed * Time.deltaTime);
-        return (State.Moving, s);
+        var shooterTrans = s.transform;
+        shooterTrans.LookAt(s.MoveTarget);
+        shooterTrans.position = shooterTrans.position + (s.Speed * Time.deltaTime * shooterTrans.forward);
+        return State.Moving;
     }
 }
