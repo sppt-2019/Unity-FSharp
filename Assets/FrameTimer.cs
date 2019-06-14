@@ -20,6 +20,8 @@ public class FrameTimer : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        if (!Directory.Exists(Folder))
+            Directory.CreateDirectory(Folder);
         _resultsFile = new StreamWriter(Folder + outputFile, false);
         _resultsFile.WriteLine("Frame Count,Frame Time (ns)");
         _stopwatch = Stopwatch.StartNew();

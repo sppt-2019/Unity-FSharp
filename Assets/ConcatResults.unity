@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da6c7d543d109314bb8f06f31b4bba64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FolderName: il2cpp-results
-  OutputFile: output.csv
+  FolderName: 500
+  OutputFile: sequential.csv
 --- !u!4 &1320735605
 Transform:
   m_ObjectHideFlags: 0

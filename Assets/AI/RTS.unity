@@ -1009,7 +1009,6 @@ GameObject:
   - component: {fileID: 1056795419}
   - component: {fileID: 1056795418}
   - component: {fileID: 1056795417}
-  - component: {fileID: 1056795420}
   m_Layer: 0
   m_Name: StateMachine
   m_TagString: StateMachine
@@ -1108,8 +1107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShooterMovingSpeed: 2
-  RotatingSpeed: 125
-  FleeTime: 5
+  RotatingSpeed: 25
+  FleeTime: 4
 --- !u!114 &1056795419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,21 +1124,6 @@ MonoBehaviour:
   TimeBetweenshots: 2
   NumberOfShotsBeforeStateChange: 5
   AttackTarget: {fileID: 367492353}
---- !u!114 &1056795420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056795412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca20f0aeb660f8b45a1d2aa0d9e08295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Folder: Concurrent
-  outputFile: 1500.csv
-  FrameCountCap: 900
 --- !u!1 &1203555779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,6 +1283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1351931617}
   - component: {fileID: 1351931616}
+  - component: {fileID: 1351931618}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -1322,7 +1307,7 @@ MonoBehaviour:
     type: 3}
   FRP_RangerPrefab: {fileID: 813523437537421142, guid: e91d9bac62fecf940a30c7e24bdd9528,
     type: 3}
-  NumberOfRangers: 10
+  NumberOfRangers: 2500
   XBoundary: {x: -3.8, y: 5.8}
   ZBoundary: {x: -6.1, y: 3.5}
   UseFRP: 0
@@ -1340,6 +1325,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1351931618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351931615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca20f0aeb660f8b45a1d2aa0d9e08295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Folder: Concurrent
+  outputFile: 2500.csv
+  FrameCountCap: 900
 --- !u!1 &1454461147
 GameObject:
   m_ObjectHideFlags: 0

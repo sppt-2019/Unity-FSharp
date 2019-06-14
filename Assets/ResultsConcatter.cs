@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 public class ResultsConcatter : MonoBehaviour
 {
@@ -58,8 +60,10 @@ public class ResultsConcatter : MonoBehaviour
                 var line = parser.ReadLine();
                 var split = line.Split(',');
                 var rowName = split[0];
+                var time = int.Parse(split[1]);
+                var measurement = (1f * Stopwatch.Frequency) / time;
                 
-                results.Add((rowName, split[1]));
+                results.Add((rowName, measurement.ToString()));
             }
         }
 
